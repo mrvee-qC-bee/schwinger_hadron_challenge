@@ -137,39 +137,16 @@ the ODR bias derivation and the rationale for your improvement run.
    must predict ≤ 180 s before any submission; after every job record `job.usage()`. Planned budget:
    canary ≈ 4 s, main run ≈ 32 s (4 PUBs × 64 twirls × 256 shots), improvement ≤ 60 s. Exceeding
    180 s costs 5 points; exceeding it deliberately voids Part 4.
-2. **Accounts.** Open Plan only (10 min per 28-day window per instance) on `ibm_fez`,
-   `ibm_marrakesh` or `ibm_kingston`; job or batch mode — sessions are not available and must not be
-   used. One instance per team for the scored runs; the four circuits of one run must be submitted as
-   one job on one layout. Do not spread the PUBs of one run over several accounts.
-3. **Hardware windows.** Jobs count only if submitted inside the announced windows (canary Day 1
-   afternoon, main run Day 1 evening, improvement Day 2 midday) and before the hardware freeze on
-   Day 2 afternoon. If your main job has not returned by Day 2 morning, ask the organizers for the
-   fallback dataset (scored at 75 %).
-4. **Teamwork.** Teams of 3–4. You may talk to other teams about physics and Qiskit, not exchange
+2. **Teamwork.** Teams of 3–4. You may talk to other teams about physics and Qiskit, not exchange
    code or data. Mentors give the printed hints only (level 1 inline, level 2 released Day 1 evening,
    level 3 on Day 2 afternoon at the cost of 1 point on that exercise).
-5. **Allowed resources.** The two papers ([arXiv:2401.08044](https://arxiv.org/abs/2401.08044),
+3. **Allowed resources.** The two papers ([arXiv:2401.08044](https://arxiv.org/abs/2401.08044),
    [arXiv:2308.04481](https://arxiv.org/abs/2308.04481)), the IBM Quantum documentation, the Qiskit API
    reference, the public QDC 2025 repository and any textbook. AI assistants may be used for Qiskit
    syntax; you must be able to explain every line in the viva.
    Copying the public QDC solution earns little by construction: its fill-ins are the 10-point
    warm-up, they are graded at other lattice sizes, the other 90 points do not exist in that notebook,
    and the viva asks you to explain your own results.
-6. **Integrity.** The grader recomputes your mitigated profile from the raw evs; submitted evs that
-   coincide with an organizer-released dataset (unless declared as fallback), jobs outside the windows, or an edited `submission/`
-   folder are flagged and zero the exercise. Every team member must be present at the viva.
-
-## Timeline (placeholder — the final schedule is announced at kick-off)
-
-| | 3-day plan |
-|---|---|
-| Day 1 morning | kick-off, physics primer, Parts 0–1 |
-| Day 1 afternoon | Part 2, **canary window** |
-| Day 1 evening | Part 3.1–3.2, level-2 hints, **main-run window** (queue clears overnight) |
-| Day 2 morning | Part 3.3, post-processing; fallback dataset for teams without a job |
-| Day 2 midday | **improvement window**; hardware freeze mid-afternoon |
-| Day 2 afternoon | Part 5 report, bonus |
-| Day 3 | submission deadline (morning), pitches and vivas, leaderboard and awards |
 
 ## Links
 
