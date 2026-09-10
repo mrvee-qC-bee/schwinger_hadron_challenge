@@ -1,0 +1,1552 @@
+{
+  "config_hash": "cc9228e62292b542523745f3d201e3a66f8d5afb0c85dcbfec1db4946f1a0816",
+  "job_id": "d9jm0doii2cc73ef1p60",
+  "layout": [
+    113,
+    119,
+    133,
+    134,
+    135,
+    139,
+    155,
+    154,
+    153,
+    152,
+    151,
+    138,
+    131,
+    130,
+    129,
+    128,
+    127,
+    126,
+    125,
+    117,
+    105,
+    106,
+    107,
+    97,
+    87,
+    88,
+    89,
+    78,
+    69,
+    68,
+    67,
+    66,
+    65,
+    64,
+    63,
+    56,
+    43,
+    44,
+    45,
+    37,
+    25,
+    24,
+    23,
+    16,
+    3,
+    4,
+    5,
+    6,
+    7,
+    17,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    39,
+    53,
+    54,
+    55,
+    59,
+    75,
+    74,
+    73,
+    79,
+    93,
+    94
+  ],
+  "measured": {
+    "t0_vacuum": [
+      -0.7637,
+      0.6332,
+      -0.6123,
+      0.6062,
+      -0.5919,
+      0.5684,
+      -0.585,
+      0.1759,
+      -0.6325,
+      0.5536,
+      -0.6072,
+      0.6228,
+      -0.6202,
+      0.6243,
+      -0.6126,
+      0.6226,
+      -0.5979,
+      0.6185,
+      -0.5928,
+      0.6243,
+      -0.6316,
+      0.6351,
+      -0.5806,
+      0.6031,
+      -0.5584,
+      0.4922,
+      -0.5194,
+      0.5586,
+      -0.6216,
+      0.5939,
+      -0.6272,
+      0.5881,
+      -0.6475,
+      -0.4501,
+      -0.5156,
+      0.5991,
+      -0.5906,
+      0.5912,
+      -0.5856,
+      0.6074,
+      -0.576,
+      0.5734,
+      -0.5939,
+      0.6218,
+      -0.6216,
+      0.6291,
+      -0.6059,
+      0.6039,
+      -0.5319,
+      0.3138,
+      -0.2124,
+      0.3035,
+      -0.5579,
+      0.6111,
+      -0.5815,
+      0.5522,
+      -0.5775,
+      0.5999,
+      -0.5928,
+      0.5909,
+      -0.5952,
+      0.548,
+      -0.6087,
+      0.6084,
+      -0.5448,
+      0.6111,
+      -0.6173,
+      0.7902
+    ],
+    "t0_wave": [
+      -0.7565,
+      0.6303,
+      -0.617,
+      0.6078,
+      -0.5976,
+      0.57,
+      -0.5821,
+      0.1778,
+      -0.6407,
+      0.5651,
+      -0.6049,
+      0.6164,
+      -0.623,
+      0.6321,
+      -0.612,
+      0.6176,
+      -0.6026,
+      0.6211,
+      -0.5864,
+      0.6232,
+      -0.6224,
+      0.6315,
+      -0.5811,
+      0.5989,
+      -0.5525,
+      0.4898,
+      -0.5139,
+      0.5513,
+      -0.6253,
+      0.598,
+      -0.6166,
+      0.5817,
+      -0.6956,
+      -0.6912,
+      -0.5264,
+      0.7695,
+      -0.5985,
+      0.6004,
+      -0.5932,
+      0.5973,
+      -0.5746,
+      0.5802,
+      -0.6002,
+      0.6288,
+      -0.6289,
+      0.6237,
+      -0.6092,
+      0.6208,
+      -0.5311,
+      0.3226,
+      -0.2075,
+      0.2864,
+      -0.5505,
+      0.6064,
+      -0.5679,
+      0.5412,
+      -0.5733,
+      0.5818,
+      -0.5906,
+      0.6002,
+      -0.579,
+      0.5472,
+      -0.6062,
+      0.61,
+      -0.5697,
+      0.6065,
+      -0.6096,
+      0.791
+    ],
+    "tprobe_vacuum": [
+      -0.8217,
+      0.6589,
+      -0.5655,
+      0.4783,
+      -0.3864,
+      0.444,
+      -0.5089,
+      0.074,
+      -0.6349,
+      0.7076,
+      -0.6369,
+      0.566,
+      -0.5503,
+      0.6046,
+      -0.5678,
+      0.5799,
+      -0.5595,
+      0.5766,
+      -0.5269,
+      0.5908,
+      -0.6344,
+      0.604,
+      -0.5344,
+      0.5901,
+      -0.5324,
+      0.5309,
+      -0.4465,
+      0.5818,
+      -0.6549,
+      0.6693,
+      -0.6957,
+      0.6097,
+      -0.5853,
+      -0.0508,
+      -0.3441,
+      0.4967,
+      -0.4713,
+      0.5235,
+      -0.5438,
+      0.5001,
+      -0.4902,
+      0.5605,
+      -0.6278,
+      0.6131,
+      -0.5782,
+      0.5981,
+      -0.5187,
+      0.4326,
+      -0.3451,
+      0.1944,
+      -0.1463,
+      0.056,
+      -0.365,
+      0.3579,
+      -0.4796,
+      0.4958,
+      -0.4282,
+      0.3912,
+      -0.4623,
+      0.5274,
+      -0.551,
+      0.4857,
+      -0.5159,
+      0.509,
+      -0.4132,
+      0.5174,
+      -0.5526,
+      0.7637
+    ],
+    "tprobe_wave": [
+      -0.8219,
+      0.6738,
+      -0.5717,
+      0.4831,
+      -0.416,
+      0.4497,
+      -0.5044,
+      0.0825,
+      -0.6329,
+      0.7037,
+      -0.6395,
+      0.5717,
+      -0.5466,
+      0.6088,
+      -0.5732,
+      0.5858,
+      -0.573,
+      0.5633,
+      -0.5197,
+      0.5937,
+      -0.6514,
+      0.6206,
+      -0.5349,
+      0.6083,
+      -0.5515,
+      0.5299,
+      -0.4395,
+      0.5882,
+      -0.6608,
+      0.6658,
+      -0.6927,
+      0.5886,
+      -0.6155,
+      -0.248,
+      -0.3517,
+      0.4241,
+      -0.4239,
+      0.5238,
+      -0.5293,
+      0.4991,
+      -0.4957,
+      0.5554,
+      -0.6177,
+      0.6054,
+      -0.5775,
+      0.596,
+      -0.525,
+      0.4274,
+      -0.3409,
+      0.1933,
+      -0.1445,
+      0.0511,
+      -0.3592,
+      0.3463,
+      -0.4716,
+      0.4904,
+      -0.4273,
+      0.399,
+      -0.4886,
+      0.5369,
+      -0.5494,
+      0.4775,
+      -0.5081,
+      0.5057,
+      -0.3979,
+      0.5068,
+      -0.5579,
+      0.7701
+    ]
+  },
+  "score": {
+    "critical_sites": [
+      33,
+      34
+    ],
+    "flagged_qubits": [
+      27,
+      63,
+      64,
+      154
+    ],
+    "flagged_sites": [
+      {
+        "arm": "wave",
+        "measured": 0.1778,
+        "qubit": 154,
+        "reference": 0.6586822813932056,
+        "retention": 0.2699328720729029,
+        "site": 7,
+        "wrong_sign": false
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5264,
+        "qubit": 63,
+        "reference": 0.7662003180367495,
+        "retention": -0.687026600757365,
+        "site": 34,
+        "wrong_sign": true
+      },
+      {
+        "arm": "wave",
+        "measured": -0.2075,
+        "qubit": 27,
+        "reference": -0.6586822813969412,
+        "retention": 0.31502289625877217,
+        "site": 50,
+        "wrong_sign": false
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.1759,
+        "qubit": 154,
+        "reference": 0.6586822813932183,
+        "retention": 0.26704832507099385,
+        "site": 7,
+        "wrong_sign": false
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.4501,
+        "qubit": 64,
+        "reference": 0.6588035218432854,
+        "retention": -0.6832082480989965,
+        "site": 33,
+        "wrong_sign": true
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.2124,
+        "qubit": 27,
+        "reference": -0.6586822813969471,
+        "retention": 0.3224619911583741,
+        "site": 50,
+        "wrong_sign": false
+      }
+    ],
+    "packet_contrast": {
+      "t0": {
+        "ideal_max": 1.4250038398829743,
+        "measured_max": 0.24110000000000004,
+        "retention": 0.16919252654070036,
+        "sites": [
+          33,
+          34
+        ]
+      },
+      "t_probe": {
+        "ideal_max": 1.4250038398829743,
+        "measured_max": 0.1972,
+        "retention": 0.13838559201089218,
+        "sites": [
+          33,
+          34
+        ]
+      }
+    },
+    "per_site": [
+      {
+        "arm": "wave",
+        "measured": -0.7565,
+        "qubit": 113,
+        "reference": -0.8144678513977666,
+        "retention": 0.9288273302644373,
+        "site": 0
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6303,
+        "qubit": 119,
+        "reference": 0.667345041601645,
+        "retention": 0.9444889235818161,
+        "site": 1
+      },
+      {
+        "arm": "wave",
+        "measured": -0.617,
+        "qubit": 133,
+        "reference": -0.665147282859651,
+        "retention": 0.927614102770363,
+        "site": 2
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6078,
+        "qubit": 134,
+        "reference": 0.6584364036640673,
+        "retention": 0.9230959840885379,
+        "site": 3
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5976,
+        "qubit": 135,
+        "reference": -0.6651472828818557,
+        "retention": 0.8984476301411074,
+        "site": 4
+      },
+      {
+        "arm": "wave",
+        "measured": 0.57,
+        "qubit": 139,
+        "reference": 0.6586822813908002,
+        "retention": 0.8653641005743337,
+        "site": 5
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5821,
+        "qubit": 155,
+        "reference": -0.6586826869322071,
+        "retention": 0.8837335663263164,
+        "site": 6
+      },
+      {
+        "arm": "wave",
+        "measured": 0.1778,
+        "qubit": 154,
+        "reference": 0.6586822813932056,
+        "retention": 0.2699328720729029,
+        "site": 7
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6407,
+        "qubit": 153,
+        "reference": -0.6586822813883738,
+        "retention": 0.9726996127017861,
+        "site": 8
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5651,
+        "qubit": 152,
+        "reference": 0.658682281398053,
+        "retention": 0.857925005665213,
+        "site": 9
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6049,
+        "qubit": 151,
+        "reference": -0.658682281396866,
+        "retention": 0.9183486744431472,
+        "site": 10
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6164,
+        "qubit": 138,
+        "reference": 0.6586822813969513,
+        "retention": 0.9358077747176106,
+        "site": 11
+      },
+      {
+        "arm": "wave",
+        "measured": -0.623,
+        "qubit": 131,
+        "reference": -0.6586822813969355,
+        "retention": 0.9458277800926109,
+        "site": 12
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6321,
+        "qubit": 130,
+        "reference": 0.6586822813969385,
+        "retention": 0.9596432420490155,
+        "site": 13
+      },
+      {
+        "arm": "wave",
+        "measured": -0.612,
+        "qubit": 129,
+        "reference": -0.658682281396939,
+        "retention": 0.9291277711343096,
+        "site": 14
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6176,
+        "qubit": 128,
+        "reference": 0.658682281396938,
+        "retention": 0.9376295938767165,
+        "site": 15
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6026,
+        "qubit": 127,
+        "reference": -0.6586822813969393,
+        "retention": 0.9148568543881286,
+        "site": 16
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6211,
+        "qubit": 126,
+        "reference": 0.658682281396938,
+        "retention": 0.9429432330907198,
+        "site": 17
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5864,
+        "qubit": 125,
+        "reference": -0.6586822813969392,
+        "retention": 0.8902622957404559,
+        "site": 18
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6232,
+        "qubit": 117,
+        "reference": 0.6586822813969385,
+        "retention": 0.946131416619121,
+        "site": 19
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6224,
+        "qubit": 105,
+        "reference": -0.6586822813969385,
+        "retention": 0.9449168705130632,
+        "site": 20
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6315,
+        "qubit": 106,
+        "reference": 0.658682281396938,
+        "retention": 0.9587323324694728,
+        "site": 21
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5811,
+        "qubit": 107,
+        "reference": -0.6586822813969385,
+        "retention": 0.8822159277878229,
+        "site": 22
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5989,
+        "qubit": 97,
+        "reference": 0.6586822813969386,
+        "retention": 0.9092395786476115,
+        "site": 23
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5525,
+        "qubit": 87,
+        "reference": -0.6586822813969393,
+        "retention": 0.8387959044962513,
+        "site": 24
+      },
+      {
+        "arm": "wave",
+        "measured": 0.4898,
+        "qubit": 88,
+        "reference": 0.6586822813969392,
+        "retention": 0.7436058534339619,
+        "site": 25
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5139,
+        "qubit": 89,
+        "reference": -0.6586822813969393,
+        "retention": 0.7801940548789567,
+        "site": 26
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5513,
+        "qubit": 78,
+        "reference": 0.6586822813969293,
+        "retention": 0.8369740853371771,
+        "site": 27
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6253,
+        "qubit": 69,
+        "reference": -0.658682281397005,
+        "retention": 0.9493196001474272,
+        "site": 28
+      },
+      {
+        "arm": "wave",
+        "measured": 0.598,
+        "qubit": 68,
+        "reference": 0.6586822813963555,
+        "retention": 0.9078732142791001,
+        "site": 29
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6166,
+        "qubit": 67,
+        "reference": -0.6586822813991553,
+        "retention": 0.9361114112409928,
+        "site": 30
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5817,
+        "qubit": 66,
+        "reference": 0.658682281376117,
+        "retention": 0.8831268373952829,
+        "site": 31
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6956,
+        "qubit": 65,
+        "reference": -0.8494495701437725,
+        "retention": 0.8188832209100619,
+        "site": 32
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6912,
+        "qubit": 64,
+        "reference": -0.7662003180396889,
+        "retention": 0.90211395600621,
+        "site": 33
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5264,
+        "qubit": 63,
+        "reference": 0.7662003180367495,
+        "retention": -0.687026600757365,
+        "site": 34
+      },
+      {
+        "arm": "wave",
+        "measured": 0.7695,
+        "qubit": 56,
+        "reference": 0.8494495701668399,
+        "retention": 0.9058807338602373,
+        "site": 35
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5985,
+        "qubit": 43,
+        "reference": -0.6586822813941303,
+        "retention": 0.9086323055984566,
+        "site": 36
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6004,
+        "qubit": 44,
+        "reference": 0.6586822813976039,
+        "retention": 0.9115168525955496,
+        "site": 37
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5932,
+        "qubit": 45,
+        "reference": -0.6586822813968448,
+        "retention": 0.9005859376420771,
+        "site": 38
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5973,
+        "qubit": 37,
+        "reference": 0.6586822813969405,
+        "retention": 0.9068104864354932,
+        "site": 39
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5746,
+        "qubit": 25,
+        "reference": -0.6586822813969397,
+        "retention": 0.8723477406761008,
+        "site": 40
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5802,
+        "qubit": 24,
+        "reference": 0.6586822813969411,
+        "retention": 0.8808495634185045,
+        "site": 41
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6002,
+        "qubit": 23,
+        "reference": -0.6586822813969415,
+        "retention": 0.9112132160699516,
+        "site": 42
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6288,
+        "qubit": 16,
+        "reference": 0.6586822813969411,
+        "retention": 0.9546332393615229,
+        "site": 43
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6289,
+        "qubit": 3,
+        "reference": -0.6586822813969414,
+        "retention": 0.9547850576247796,
+        "site": 44
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6237,
+        "qubit": 4,
+        "reference": 0.6586822813969405,
+        "retention": 0.9468905079354045,
+        "site": 45
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6092,
+        "qubit": 5,
+        "reference": -0.6586822813969416,
+        "retention": 0.9248768597631031,
+        "site": 46
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6208,
+        "qubit": 6,
+        "reference": 0.6586822813969403,
+        "retention": 0.9424877783009449,
+        "site": 47
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5311,
+        "qubit": 7,
+        "reference": -0.6586822813969414,
+        "retention": 0.8063067961591993,
+        "site": 48
+      },
+      {
+        "arm": "wave",
+        "measured": 0.3226,
+        "qubit": 17,
+        "reference": 0.6586822813969405,
+        "retention": 0.4897657172678555,
+        "site": 49
+      },
+      {
+        "arm": "wave",
+        "measured": -0.2075,
+        "qubit": 27,
+        "reference": -0.6586822813969412,
+        "retention": 0.31502289625877217,
+        "site": 50
+      },
+      {
+        "arm": "wave",
+        "measured": 0.2864,
+        "qubit": 28,
+        "reference": 0.6586822813969407,
+        "retention": 0.4348075059687345,
+        "site": 51
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5505,
+        "qubit": 29,
+        "reference": -0.6586822813969408,
+        "retention": 0.8357595392311045,
+        "site": 52
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6064,
+        "qubit": 30,
+        "reference": 0.6586822813969412,
+        "retention": 0.9206259483919011,
+        "site": 53
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5679,
+        "qubit": 31,
+        "reference": -0.6586822813969412,
+        "retention": 0.8621759170378637,
+        "site": 54
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5412,
+        "qubit": 32,
+        "reference": 0.658682281396941,
+        "retention": 0.8216404407481811,
+        "site": 55
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5733,
+        "qubit": 33,
+        "reference": -0.6586822813969407,
+        "retention": 0.8703741032537553,
+        "site": 56
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5818,
+        "qubit": 39,
+        "reference": 0.6586822813969422,
+        "retention": 0.8832786556306187,
+        "site": 57
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5906,
+        "qubit": 53,
+        "reference": -0.6586822813969291,
+        "retention": 0.8966386627972737,
+        "site": 58
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6002,
+        "qubit": 54,
+        "reference": 0.6586822813970297,
+        "retention": 0.9112132160698297,
+        "site": 59
+      },
+      {
+        "arm": "wave",
+        "measured": -0.579,
+        "qubit": 55,
+        "reference": -0.6586822813968226,
+        "retention": 0.8790277442595755,
+        "site": 60
+      },
+      {
+        "arm": "wave",
+        "measured": 0.5472,
+        "qubit": 59,
+        "reference": 0.658682686937616,
+        "retention": 0.8307490250640601,
+        "site": 61
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6062,
+        "qubit": 75,
+        "reference": -0.6586822813973754,
+        "retention": 0.9203223118647798,
+        "site": 62
+      },
+      {
+        "arm": "wave",
+        "measured": 0.61,
+        "qubit": 74,
+        "reference": 0.6586751388453108,
+        "retention": 0.9261014482334331,
+        "site": 63
+      },
+      {
+        "arm": "wave",
+        "measured": -0.5697,
+        "qubit": 73,
+        "reference": -0.6584364036572677,
+        "retention": 0.865231625766158,
+        "site": 64
+      },
+      {
+        "arm": "wave",
+        "measured": 0.6065,
+        "qubit": 79,
+        "reference": 0.6651472828773732,
+        "retention": 0.911828125308323,
+        "site": 65
+      },
+      {
+        "arm": "wave",
+        "measured": -0.6096,
+        "qubit": 93,
+        "reference": -0.6608728975950593,
+        "retention": 0.9224164014265932,
+        "site": 66
+      },
+      {
+        "arm": "wave",
+        "measured": 0.791,
+        "qubit": 94,
+        "reference": 0.8144678513981103,
+        "retention": 0.9711862765880501,
+        "site": 67
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.7637,
+        "qubit": 113,
+        "reference": -0.8144678513960697,
+        "retention": 0.9376674581948826,
+        "site": 0
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6332,
+        "qubit": 119,
+        "reference": 0.6673450416142093,
+        "retention": 0.9488345016670575,
+        "site": 1
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6123,
+        "qubit": 133,
+        "reference": -0.6651472828723776,
+        "retention": 0.9205479985663304,
+        "site": 2
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6062,
+        "qubit": 134,
+        "reference": 0.6584364036621758,
+        "retention": 0.9206659847911799,
+        "site": 3
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5919,
+        "qubit": 135,
+        "reference": -0.6651472828819707,
+        "retention": 0.8898780995321779,
+        "site": 4
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5684,
+        "qubit": 139,
+        "reference": 0.6586822813911686,
+        "retention": 0.8629350083617127,
+        "site": 5
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.585,
+        "qubit": 155,
+        "reference": -0.6586826869320439,
+        "retention": 0.8881362932503405,
+        "site": 6
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.1759,
+        "qubit": 154,
+        "reference": 0.6586822813932183,
+        "retention": 0.26704832507099385,
+        "site": 7
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6325,
+        "qubit": 153,
+        "reference": -0.6586822813883328,
+        "retention": 0.96025051511459,
+        "site": 8
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5536,
+        "qubit": 152,
+        "reference": 0.6586822813980018,
+        "retention": 0.8404659053907252,
+        "site": 9
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6072,
+        "qubit": 151,
+        "reference": -0.6586822813969324,
+        "retention": 0.9218404944979711,
+        "site": 10
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6228,
+        "qubit": 138,
+        "reference": 0.6586822813969473,
+        "retention": 0.9455241435660796,
+        "site": 11
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6202,
+        "qubit": 131,
+        "reference": -0.6586822813969405,
+        "retention": 0.941576868721401,
+        "site": 12
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6243,
+        "qubit": 130,
+        "reference": 0.6586822813969427,
+        "retention": 0.9478014175149446,
+        "site": 13
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6126,
+        "qubit": 129,
+        "reference": -0.6586822813969433,
+        "retention": 0.930038680713847,
+        "site": 14
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6226,
+        "qubit": 128,
+        "reference": 0.658682281396943,
+        "retention": 0.9452205070395714,
+        "site": 15
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5979,
+        "qubit": 127,
+        "reference": -0.6586822813969435,
+        "retention": 0.9077213960150324,
+        "site": 16
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6185,
+        "qubit": 126,
+        "reference": 0.658682281396942,
+        "retention": 0.938995958246026,
+        "site": 17
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5928,
+        "qubit": 125,
+        "reference": -0.6586822813969435,
+        "retention": 0.8999786645889133,
+        "site": 18
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6243,
+        "qubit": 117,
+        "reference": 0.6586822813969427,
+        "retention": 0.9478014175149446,
+        "site": 19
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6316,
+        "qubit": 105,
+        "reference": -0.6586822813969435,
+        "retention": 0.958884150732722,
+        "site": 20
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6351,
+        "qubit": 106,
+        "reference": 0.6586822813969435,
+        "retention": 0.9641977899467253,
+        "site": 21
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5806,
+        "qubit": 107,
+        "reference": -0.6586822813969435,
+        "retention": 0.8814568364715301,
+        "site": 22
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6031,
+        "qubit": 97,
+        "reference": 0.6586822813969438,
+        "retention": 0.9156159457044084,
+        "site": 23
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5584,
+        "qubit": 87,
+        "reference": -0.6586822813969444,
+        "retention": 0.8477531820284219,
+        "site": 24
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.4922,
+        "qubit": 88,
+        "reference": 0.6586822813969444,
+        "retention": 0.7472494917521297,
+        "site": 25
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5194,
+        "qubit": 89,
+        "reference": -0.658682281396945,
+        "retention": 0.788544059358098,
+        "site": 26
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5586,
+        "qubit": 78,
+        "reference": 0.658682281396945,
+        "retention": 0.8480568185549356,
+        "site": 27
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6216,
+        "qubit": 69,
+        "reference": -0.658682281396926,
+        "retention": 0.9437023244070233,
+        "site": 28
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5939,
+        "qubit": 68,
+        "reference": 0.6586822813971005,
+        "retention": 0.9016486654845279,
+        "site": 29
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6272,
+        "qubit": 67,
+        "reference": -0.6586822813970884,
+        "retention": 0.952204147149194,
+        "site": 30
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5881,
+        "qubit": 66,
+        "reference": 0.6586822813969592,
+        "retention": 0.8928432062158017,
+        "site": 31
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6475,
+        "qubit": 65,
+        "reference": -0.65865729461931,
+        "retention": 0.9830605464929092,
+        "site": 32
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.4501,
+        "qubit": 64,
+        "reference": 0.6588035218432854,
+        "retention": -0.6832082480989965,
+        "site": 33
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5156,
+        "qubit": 63,
+        "reference": -0.6588035218408308,
+        "retention": 0.7826309102891692,
+        "site": 34
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5991,
+        "qubit": 56,
+        "reference": 0.6586572946329361,
+        "retention": 0.9095777195238886,
+        "site": 35
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5906,
+        "qubit": 43,
+        "reference": -0.658682281411264,
+        "retention": 0.8966386627777602,
+        "site": 36
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5912,
+        "qubit": 44,
+        "reference": 0.658682281395178,
+        "retention": 0.8975495723792031,
+        "site": 37
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5856,
+        "qubit": 45,
+        "reference": -0.6586822813969717,
+        "retention": 0.889047749634354,
+        "site": 38
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6074,
+        "qubit": 37,
+        "reference": 0.6586822813969352,
+        "retention": 0.9221441310244819,
+        "site": 39
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.576,
+        "qubit": 25,
+        "reference": -0.6586822813969511,
+        "retention": 0.874473196361687,
+        "site": 40
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5734,
+        "qubit": 24,
+        "reference": 0.6586822813969457,
+        "retention": 0.8705259215170059,
+        "site": 41
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5939,
+        "qubit": 23,
+        "reference": -0.6586822813969462,
+        "retention": 0.9016486654847392,
+        "site": 42
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6218,
+        "qubit": 16,
+        "reference": 0.6586822813969457,
+        "retention": 0.9440059609335094,
+        "site": 43
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6216,
+        "qubit": 3,
+        "reference": -0.6586822813969463,
+        "retention": 0.9437023244069942,
+        "site": 44
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6291,
+        "qubit": 4,
+        "reference": 0.6586822813969458,
+        "retention": 0.9550886941512876,
+        "site": 45
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6059,
+        "qubit": 5,
+        "reference": -0.6586822813969472,
+        "retention": 0.9198668570756064,
+        "site": 46
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6039,
+        "qubit": 6,
+        "reference": 0.658682281396946,
+        "retention": 0.9168304918104634,
+        "site": 47
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5319,
+        "qubit": 7,
+        "reference": -0.658682281396947,
+        "retention": 0.8075213422652505,
+        "site": 48
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.3138,
+        "qubit": 17,
+        "reference": 0.6586822813969457,
+        "retention": 0.47640571010121463,
+        "site": 49
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.2124,
+        "qubit": 27,
+        "reference": -0.6586822813969471,
+        "retention": 0.3224619911583741,
+        "site": 50
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.3035,
+        "qubit": 28,
+        "reference": 0.6586822813969457,
+        "retention": 0.460768428985719,
+        "site": 51
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5579,
+        "qubit": 29,
+        "reference": -0.6586822813969466,
+        "retention": 0.8469940907121327,
+        "site": 52
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6111,
+        "qubit": 30,
+        "reference": 0.6586822813969467,
+        "retention": 0.9277614067649834,
+        "site": 53
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5815,
+        "qubit": 31,
+        "reference": -0.6586822813969471,
+        "retention": 0.8828232008408405,
+        "site": 54
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5522,
+        "qubit": 32,
+        "reference": 0.6586822813969464,
+        "retention": 0.8383404497064706,
+        "site": 55
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5775,
+        "qubit": 33,
+        "reference": -0.6586822813969471,
+        "retention": 0.876750470310551,
+        "site": 56
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5999,
+        "qubit": 39,
+        "reference": 0.6586822813969474,
+        "retention": 0.9107577612801718,
+        "site": 57
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5928,
+        "qubit": 53,
+        "reference": -0.6586822813969342,
+        "retention": 0.899978664588926,
+        "site": 58
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.5909,
+        "qubit": 54,
+        "reference": 0.6586822813970351,
+        "retention": 0.8970941175869009,
+        "site": 59
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5952,
+        "qubit": 55,
+        "reference": -0.6586822813968276,
+        "retention": 0.9036223029072459,
+        "site": 60
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.548,
+        "qubit": 59,
+        "reference": 0.6586826869376216,
+        "retention": 0.8319635704223339,
+        "site": 61
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6087,
+        "qubit": 75,
+        "reference": -0.6586822813973808,
+        "retention": 0.9241177684462007,
+        "site": 62
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6084,
+        "qubit": 74,
+        "reference": 0.6586751388453164,
+        "retention": 0.923672329680682,
+        "site": 63
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.5448,
+        "qubit": 73,
+        "reference": -0.6584364036572729,
+        "retention": 0.8274147616594684,
+        "site": 64
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.6111,
+        "qubit": 79,
+        "reference": 0.6651472828773788,
+        "retention": 0.918743886852286,
+        "site": 65
+      },
+      {
+        "arm": "vacuum",
+        "measured": -0.6173,
+        "qubit": 93,
+        "reference": -0.660872897595065,
+        "retention": 0.9340676584656021,
+        "site": 66
+      },
+      {
+        "arm": "vacuum",
+        "measured": 0.7902,
+        "qubit": 94,
+        "reference": 0.8144678513981168,
+        "retention": 0.9702040401515436,
+        "site": 67
+      }
+    ],
+    "reasons": [
+      "4 qubit(s) below site-retention 0.4 at t=0: [27, 63, 64, 154]",
+      "t_probe packet contrast retention 0.138 < 0.15"
+    ],
+    "thresholds": {
+      "max_flagged_qubits": 2,
+      "min_packet_contrast": 0.15,
+      "min_site_retention": 0.4,
+      "noise_sigmas": 5.0,
+      "ref_floor": 0.2
+    },
+    "verdict": "fail"
+  },
+  "scored": "2026-07-27T21:44:25+08:00",
+  "shots": 20000,
+  "state": "scored",
+  "t_probe": 1,
+  "tp": "o1",
+  "verdict": "fail"
+}

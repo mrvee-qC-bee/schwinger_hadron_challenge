@@ -1,0 +1,20 @@
+[1] RXYplus: matches ['exp(-i th/2 G)']
+[1] RXYminus: matches ['exp(+i th/2 G)']
+[1] RXXplus: matches ['exp(-i th/2 G)']
+[2] L=4: electric layer == exp(-i t H_el^(Q=0)(1)) up to phase: True (max err 4.45e-16)
+[2] L=6: electric layer == exp(-i t H_el^(Q=0)(1)) up to phase: True (max err 6.69e-16)
+[3] O_22 circuit vs exp(+i th O22): True (1.13e-16)
+[3] O_22 circuit vs exp(-i th O22): False (6.44e-01)
+[3] O_11 circuit vs exp(+i th O11): True (1.11e-16)
+[3] O_11 circuit vs exp(-i th O11): False (6.44e-01)
+[3] [A,B] norm: 0.0
+[4] L=4: E0=-1.18587 E_adapt=-1.17953 fid=0.9961 | ||H_full-H_trunc|| coeffs=0.466
+[4] L=6: E0=-1.84744 E_adapt=-1.83805 fid=0.9945 | ||H_full-H_trunc|| coeffs=1.082
+[4] L=8: E0=-2.50901 E_adapt=-2.49657 fid=0.9929 | ||H_full-H_trunc|| coeffs=1.969
+[5] Trotter step error vs dt (0.2,0.1,0.05): ['1.85e-03', '2.37e-04', '2.99e-05']; ratios 7.79, 7.95 (expect ~8 for 2nd order)
+[6] L=6 mitigation circuit fidelity with initial state: 1.000000000000
+[6] protect_midpoint barrier count: 1
+[7] t=0 max|dev| wave=1.38e-11 vac=1.09e-04
+[7] t=8 bond40 (29.1s): max|dev| wave=0.000 vac=0.000; vac-subtracted max dev=0.000; score(ours vs ref)={'nrmse': 3.54122067327349e-05, 'pearson': 0.9999999993159084, 'score': 99.99645877932673, 'n_valid': 68}
+[7] 2q depth physics/mitig: 256 256
+ALL TESTS PASSED

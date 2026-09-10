@@ -1,0 +1,380 @@
+{
+ "ex0.1": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "L=5: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings); L=7: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings)",
+  "time": "2026-09-07 15:47:36"
+ },
+ "ex0.2": {
+  "points": 1.0,
+  "max": 2,
+  "detail": "RXYminus(theta) != exp(+i theta/2 (XY-YX)) (max dev 9.64e-01) (looks like opposite sign)",
+  "time": "2026-09-07 15:47:36",
+  "theta": 0.5030183338947168
+ },
+ "ex0.3": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "L=6: fidelity with the reference vacuum = 0.998809; L=8: fidelity with the reference vacuum = 0.998809",
+  "time": "2026-09-07 15:47:37",
+  "fidelities": {
+   "6": 0.9988087927345136,
+   "8": 0.9988087927345137
+  }
+ },
+ "ex0.4": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "L=6: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing; L=8: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing",
+  "time": "2026-09-07 15:47:38",
+  "fidelities": {
+   "6": 0.00022634095784439698,
+   "8": 0.00022633812058598252
+  }
+ },
+ "ex0.5": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "ratio test: error ratios 3.76, 4.05 ~ 4 -> first-order step (symmetrize: kinetic half-steps before AND after H_el, H_m); t=2 physics circuit fidelity with the reference = 0.388124 (n_steps = 2 ceil(t/2), dt = t/n_steps); mitigation circuit (t=4) does not return to the initial state (fidelity 0.023936): n_steps/2 forward with +dt, then n_steps/2 with -dt",
+  "time": "2026-09-07 15:47:39",
+  "errors": [
+   0.0068287623951764735,
+   0.00181757148870557,
+   0.00044893512752985026
+  ],
+  "ratios": [
+   3.757080498682201,
+   4.048628359082276
+  ],
+  "fid_physics": 0.3881244332425853,
+  "fid_mitig": 0.023935977256553085
+ },
+ "ex1.1": {
+  "points": 3.0,
+  "max": 5,
+  "detail": "schwinger_hamiltonian(L=4): max coefficient difference 7.87e-02 (identity term excluded) (this is the TRUNCATED H_el^(1); the full model needs (sum_{k<=j} Q_k)^2 with open boundaries); schwinger_hamiltonian(L=8): max coefficient difference 2.48e-01 (identity term excluded) (this is the TRUNCATED H_el^(1); the full model needs (sum_{k<=j} Q_k)^2 with open boundaries)",
+  "time": "2026-09-07 15:47:39",
+  "E0_L8": -2.509005331524556,
+  "Ls": [
+   4,
+   8
+  ]
+ },
+ "ex1.2": {
+  "points": 0.0,
+  "max": 4,
+  "detail": "electric_layer(L=4, t=0.171): infidelity 2.20e-03 vs exp(-i t H_el^(1)) (Rz layer: Rz(g^2 t) on 2k, Rz(g^2 t/2) on 2k+1 for k<L/2-1, Rz(g^2 t/2) on L-2, Rz(-g^2 t/2) on L+1, Rz(-g^2 t/2) on L+2k, Rz(-g^2 t) on L+2k+1 for 1<=k<L/2; then trotter_step_electric_2q); electric_layer(L=6, t=0.298): infidelity 2.97e-02 vs exp(-i t H_el^(1)) (Rz layer: Rz(g^2 t) on 2k, Rz(g^2 t/2) on 2k+1 for k<L/2-1, Rz(g^2 t/2) on L-2, Rz(-g^2 t/2) on L+1, Rz(-g^2 t/2) on L+2k, Rz(-g^2 t) on L+2k+1 for 1<=k<L/2; then trotter_step_electric_2q); truncation_shift = 0.0000, expected max_j |X_full - X_trunc| = 0.0101 at L=8, t=4 (exact expm of both Hamiltonians on prep_wave AND prep_vacuum, X = chi_wave - chi_vac)",
+  "time": "2026-09-07 15:47:39",
+  "infidelities": {
+   "4": 0.002202058218798264,
+   "6": 0.029650346726409538
+  }
+ },
+ "ex1.3": {
+  "points": 1.5,
+  "max": 3,
+  "detail": "vqe_fidelity[4] = 0.98610, expected 0.99610 (overlap with eigsh ground state of the FULL H); vqe_fidelity[6] = 0.98452, expected 0.99452 (overlap with eigsh ground state of the FULL H); vqe_fidelity[8] = 0.98293, expected 0.99293 (overlap with eigsh ground state of the FULL H)",
+  "time": "2026-09-07 15:47:40"
+ },
+ "ex1.4": {
+  "points": 0.3333333333333333,
+  "max": 5,
+  "detail": "(2,0.5): 0.1000 vs reference 0.0499; (2,0.25): 0.0500 vs reference 0.0124; (4,1): 0.2000 vs reference 0.0948; (4,0.5): 0.1000 vs reference 0.0241; (4,0.25): 0.0500 vs reference 0.0060; t=2: error ratios 2.00, 2.00 not in [3, 5.5] (global 2nd-order error scales as dt^2); t=4: error ratios 2.00, 2.00 not in [3, 5.5] (global 2nd-order error scales as dt^2); richardson_error = 0.0200: X_R = (4 X(dt=0.25) - X(dt=0.5))/3 should be within 0.006 of the exact profile (reference 1.9e-04 at t=4); dominant_error = 'truncation': at dt=1 the Trotter error (0.095) exceeds the truncation shift (0.010)",
+  "time": "2026-09-07 15:47:40",
+  "ratios": {
+   "2.0": [
+    2.0,
+    2.0
+   ],
+   "4.0": [
+    2.0,
+    2.0
+   ]
+  },
+  "dominant_error": "truncation"
+ },
+ "ex1.5": {
+  "points": 1.0,
+  "max": 3,
+  "detail": "mps_err is not monotonically decreasing with the bond dimension: {8: 0.05, 20: 0.03, 40: 0.04}; expected err(bond 8) > 0.02 and err(bond 20) < 0.02, got 0.0500, 0.0300 (compare with the bond-64 organizer profile)",
+  "time": "2026-09-07 15:47:40"
+ },
+ "ex2.1": {
+  "points": 2.0,
+  "max": 3,
+  "detail": "observable 0 != chi_0.apply_layout(layout) (use SparsePauliOp.apply_layout(qc_isa.layout))",
+  "time": "2026-09-07 15:47:44",
+  "backend": "ibm_boston"
+ },
+ "ex2.2": {
+  "points": 4.5,
+  "max": 5,
+  "detail": "n_cz_physics = 5292 is the optimization_level-1 count; level 3 merges the adjacent kinetic layers of consecutive steps -> 4958",
+  "time": "2026-09-07 15:47:48"
+ },
+ "ex2.3": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "valid path on fake_fez (1.7 s); cost 22.8427 vs baseline 22.5185 (ratio 1.014)",
+  "time": "2026-09-07 15:47:55",
+  "backend": "ibm_boston",
+  "seconds": 1.6873910427093506,
+  "ratio": 1.014398866920214
+ },
+ "ex2.4": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "predicted usage 362.0 s > 120 s (800000 executions); 800000 executions > 160000; predicted_usage_s = 30.0 but the usage model gives 362.0 s = 2 + 0.45e-3 x 4 x 200 x 1000; estimator_options: resilience_level == 0, max_execution_time <= 180 not satisfied",
+  "time": "2026-09-07 15:47:55",
+  "usage_model_s": 362.0
+ },
+ "ex3.1": {
+  "points": 5.0,
+  "max": 7,
+  "detail": "odr_bias(chi_true, f_phys, f_cal) must equal (1 - chi_true) (1 - f_phys/f_cal) for arrays and scalars (value mismatch)",
+  "time": "2026-09-07 15:47:57"
+ },
+ "ex3.2": {
+  "points": 2.5,
+  "max": 5,
+  "detail": "0 % of the CZs carry a non-identity frame (need >= 70 %) and < 8 distinct circuits for 8 seeds (draw a random 2-qubit Pauli per CZ from the seed); postselect_charge: must return {bitstring: count} keeping exactly the bitstrings with Hamming weight L (Q_tot = n_1 - L = 0)",
+  "time": "2026-09-07 15:48:00",
+  "frame_fraction": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "ex3.3": {
+  "points": 2.0,
+  "max": 8,
+  "detail": "noise_model: no cz error on (52,53); no cz error on (53,54); no cz error on (54,55) (+32 more); X_mit is not odr_mitigate(wave) - odr_mitigate(vacuum) computed from chi_raw_arrays with the exact t=0 condensates",
+  "time": "2026-09-07 15:48:01",
+  "rmse_raw": 0.051765857530289276,
+  "rmse_mit": 0.051765857530289276
+ },
+ "ex4.1": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "canary ok: usage 18.0 s, median vacuum-arm retention 0.91, 3 flagged sites, verdict 'fail'",
+  "time": "2026-09-07 15:48:01",
+  "job_info": {
+   "job_id": "d9jm0doii2cc73ef1p60",
+   "backend": "ibm_boston",
+   "usage_s": 18.0,
+   "layout": [
+    113,
+    119,
+    133,
+    134,
+    135,
+    139,
+    155,
+    154,
+    153,
+    152,
+    151,
+    138,
+    131,
+    130,
+    129,
+    128,
+    127,
+    126,
+    125,
+    117,
+    105,
+    106,
+    107,
+    97,
+    87,
+    88,
+    89,
+    78,
+    69,
+    68,
+    67,
+    66,
+    65,
+    64,
+    63,
+    56,
+    43,
+    44,
+    45,
+    37,
+    25,
+    24,
+    23,
+    16,
+    3,
+    4,
+    5,
+    6,
+    7,
+    17,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    39,
+    53,
+    54,
+    55,
+    59,
+    75,
+    74,
+    73,
+    79,
+    93,
+    94
+   ]
+  },
+  "fallback": false
+ },
+ "ex4.2": {
+  "points": 11.546356862292875,
+  "max": 18,
+  "detail": "RMSE_W 0.134 (4.6), contrast 0.421 (2.9), shape 2, quiet 0.025 (2), coverage 0.22, RMSE_68 0.078, usage 96.0 s",
+  "time": "2026-09-07 15:48:01",
+  "flags": [],
+  "x_hat_consistent": true,
+  "rmse_w": 0.13449938135456374,
+  "nan_in_window": 0,
+  "contrast": 0.4210540601915996,
+  "contrast_ref": 0.515,
+  "separation": 0.38278804510689146,
+  "quiet": 0.025190884208124875,
+  "coverage": 0.2222222222222222,
+  "rmse_68": 0.07840027371498215,
+  "p_rmse": 4.62002474581745,
+  "p_contrast": 2.9263321164754235,
+  "p_shape": 2.0,
+  "p_quiet": 2.0,
+  "points_raw": 11.546356862292875,
+  "odr_factors_below_0.9_in_window": 18,
+  "fallback": false,
+  "usage_s": 96.0,
+  "job_info": {
+   "job_id": "d9hr3p50k0jc738il8dg",
+   "backend": "ibm_kingston",
+   "usage_s": 96.0,
+   "layout": [
+    143,
+    136,
+    123,
+    124,
+    125,
+    117,
+    105,
+    104,
+    103,
+    96,
+    83,
+    82,
+    81,
+    76,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    78,
+    89,
+    88,
+    87,
+    97,
+    107,
+    108,
+    109,
+    110,
+    111,
+    98,
+    91,
+    92,
+    93,
+    79,
+    73,
+    74,
+    75,
+    59,
+    55,
+    54,
+    53,
+    39,
+    33,
+    34,
+    35,
+    19,
+    15,
+    14,
+    13,
+    12,
+    11,
+    18,
+    31,
+    30,
+    29,
+    28,
+    27,
+    26,
+    25,
+    24,
+    23,
+    16,
+    3,
+    2
+   ],
+   "num_randomizations": 100,
+   "shots_per_randomization": 1000
+  }
+ },
+ "ex4.3": {
+  "points": 2.5,
+  "max": 4,
+  "detail": "RMSE_W 0.134 -> 0.125, z = 1.10, usage 182.0 s | usage_s = 182.0 (must be <= 60 s); no significant improvement (z = 1.10); half credit for a documented null result",
+  "time": "2026-09-07 15:48:01",
+  "z_grader": 1.102201007871207,
+  "rmse_baseline": 0.13449938135456374,
+  "rmse_improved": 0.12525916825396646,
+  "usage_s": 182.0,
+  "fallback": false
+ },
+ "B1": {
+  "points": 2.0,
+  "max": 3,
+  "detail": "16-step circuit has 5758 2q gates, expected 10974 +-1 %",
+  "time": "2026-09-07 15:48:08"
+ },
+ "B2": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "expected odr_depol < 0.25 raw_depol and odr_amp > odr_depol, got {'raw_depol': 0.12, 'odr_depol': 0.05, 'raw_amp': 0.1, 'odr_amp': 0.03, 'odr_amp_twirl': 0.06}; witness ordering: twirled amplitude damping should be mitigated better than untwirled (odr_amp_twirl < odr_amp)",
+  "time": "2026-09-07 15:48:08",
+  "values": {
+   "raw_depol": 0.12,
+   "odr_depol": 0.05,
+   "raw_amp": 0.1,
+   "odr_amp": 0.03,
+   "odr_amp_twirl": 0.06
+  }
+ },
+ "B3": {
+  "points": 0.0,
+  "max": 1,
+  "detail": "circuit must use rzz gates and no cx/cz (ops: {'cx': 12, 'rz': 6})",
+  "time": "2026-09-07 15:48:08"
+ }
+}

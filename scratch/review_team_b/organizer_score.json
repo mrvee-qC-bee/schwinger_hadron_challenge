@@ -1,0 +1,92 @@
+{
+ "team": "b",
+ "total_auto": 14.0,
+ "bonus": 2.0,
+ "rmse_w": null,
+ "rmse_68": null,
+ "usage_s": null,
+ "hidden": true,
+ "organizer": {
+  "ex0.1": {
+   "points": 0.0,
+   "max": 2,
+   "detail": "L=5: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings); L=7: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings)"
+  },
+  "ex0.2": {
+   "points": 1.0,
+   "max": 2,
+   "detail": "RXYminus(theta) != exp(+i theta/2 (XY-YX)) (max dev 9.64e-01) (looks like opposite sign)"
+  },
+  "ex0.3": {
+   "points": 0.0,
+   "max": 2,
+   "detail": "L=6: fidelity with the reference vacuum = 0.998809; L=8: fidelity with the reference vacuum = 0.998809"
+  },
+  "ex0.4": {
+   "points": 0.0,
+   "max": 2,
+   "detail": "L=6: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing; L=8: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing"
+  },
+  "ex0.5": {
+   "points": 0.0,
+   "max": 2,
+   "detail": "ratio test: error ratios 3.76, 4.05 ~ 4 -> first-order step (symmetrize: kinetic half-steps before AND after H_el, H_m); t=2 physics circuit fidelity with the reference = 0.388124 (n_steps = 2 ceil(t/2), dt = t/n_steps); mitigation circuit (t=4) does not return to the initial state (fidelity 0.023936): n_steps/2 forward with +dt, then n_steps/2 with -dt"
+  },
+  "ex1.1": {
+   "points": 3.0,
+   "max": 5,
+   "detail": "schwinger_hamiltonian(L=4): max coefficient difference 7.87e-02 (identity term excluded) (this is the TRUNCATED H_el^(1); the full model needs (sum_{k<=j} Q_k)^2 with open boundaries); schwinger_hamiltonian(L=8): max coefficient difference 2.48e-01 (identity term excluded) (this is the TRUNCATED H_el^(1); the full model needs (sum_{k<=j} Q_k)^2 with open boundaries)"
+  },
+  "ex3.1": {
+   "points": 5.0,
+   "max": 7,
+   "detail": "odr_bias(chi_true, f_phys, f_cal) must equal (1 - chi_true) (1 - f_phys/f_cal) for arrays and scalars (value mismatch)"
+  },
+  "ex3.2": {
+   "points": 2.5,
+   "max": 5,
+   "detail": "0 % of the CZs carry a non-identity frame (need >= 70 %) and < 8 distinct circuits for 8 seeds (draw a random 2-qubit Pauli per CZ from the seed); postselect_charge: must return {bitstring: count} keeping exactly the bitstrings with Hamming weight L (Q_tot = n_1 - L = 0)"
+  },
+  "B2": {
+   "points": 0.0,
+   "max": 2,
+   "detail": "expected odr_depol < 0.25 raw_depol and odr_amp > odr_depol, got {'raw_depol': 0.12, 'odr_depol': 0.05, 'raw_amp': 0.1, 'odr_amp': 0.03, 'odr_amp_twirl': 0.06}; witness ordering: twirled amplitude damping should be mitigated better than untwirled (odr_amp_twirl < odr_amp)"
+  },
+  "B3": {
+   "points": 0.0,
+   "max": 1,
+   "detail": "circuit must use rzz gates and no cx/cz (ops: {'cx': 12, 'rz': 6})"
+  },
+  "ex1.2": {
+   "points": 0.0,
+   "max": 4,
+   "detail": "electric_layer(L=4, t=0.171): infidelity 2.20e-03 vs exp(-i t H_el^(1)) (Rz layer: Rz(g^2 t) on 2k, Rz(g^2 t/2) on 2k+1 for k<L/2-1, Rz(g^2 t/2) on L-2, Rz(-g^2 t/2) on L+1, Rz(-g^2 t/2) on L+2k, Rz(-g^2 t) on L+2k+1 for 1<=k<L/2; then trotter_step_electric_2q); electric_layer(L=6, t=0.298): infidelity 2.97e-02 vs exp(-i t H_el^(1)) (Rz layer: Rz(g^2 t) on 2k, Rz(g^2 t/2) on 2k+1 for k<L/2-1, Rz(g^2 t/2) on L-2, Rz(-g^2 t/2) on L+1, Rz(-g^2 t/2) on L+2k, Rz(-g^2 t) on L+2k+1 for 1<=k<L/2; then trotter_step_electric_2q); truncation_shift = 0.0000, expected max_j |X_full - X_trunc| = 0.0101 at L=8, t=4 (exact expm of both Hamiltonians on prep_wave AND prep_vacuum, X = chi_wave - chi_vac)"
+  },
+  "ex4.3": {
+   "points": 2.5,
+   "max": 4,
+   "detail": "RMSE_W 0.134 -> 0.125, z = 1.10, usage 182.0 s | usage_s = 182.0 (must be <= 60 s); no significant improvement (z = 1.10); half credit for a documented null result"
+  },
+  "B1": {
+   "points": 2.0,
+   "max": 3,
+   "detail": "16-step circuit has 5758 2q gates, expected 10974 +-1 %"
+  }
+ },
+ "notes": {
+  "ex0.1": "function-level: local score kept (viva)",
+  "ex0.2": "function-level: local score kept (viva)",
+  "ex0.3": "function-level: local score kept (viva)",
+  "ex0.4": "function-level: local score kept (viva)",
+  "ex0.5": "function-level: local score kept (viva)",
+  "ex1.1": "function-level: local score kept (viva)",
+  "ex3.1": "function-level: local score kept (viva)",
+  "ex3.2": "function-level: local score kept (viva)",
+  "B2": "function-level: local score kept (viva)",
+  "B3": "function-level: local score kept (viva)",
+  "ex1.2": "electric_layer is a function: local score kept; truncation_shift re-checked",
+  "ex4.3": "improvement dict / bonus arrays: local score kept, judge reviews",
+  "B1": "improvement dict / bonus arrays: local score kept, judge reviews"
+ },
+ "flags": null
+}

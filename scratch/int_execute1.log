@@ -1,0 +1,8 @@
+[NbConvertApp] Converting notebook /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/schwinger_hadron_solution.ipynb to notebook
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[NbConvertApp] Writing 2136580 bytes to /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/schwinger_hadron_solution.ipynb
+wrote /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/schwinger_hadron_participant.ipynb (120 cells)
+wrote /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/schwinger_hadron_solution.ipynb (121 cells)
+executing: /Users/vishalbajpe/miniforge3/envs/qiskit-paper/bin/python -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=5400 --ExecutePreprocessor.kernel_name=python3 --ExecutePreprocessor.record_timing=True /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/schwinger_hadron_solution.ipynb
+solution notebook executed OK in 177 s
+/Users/vishalbajpe/miniforge3/envs/qiskit-paper/bin/python  --execute  5400  404.77s user 37.94s system 249% cpu 2:57.53 total

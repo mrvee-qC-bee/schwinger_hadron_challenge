@@ -1,0 +1,9 @@
+{
+ "ex2.1": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "4 ISA circuits on one 68-qubit path [141, 142, 143]..[36, 41, 42] , 2q-depth 220, 68 layout-consistent observables",
+  "time": "2026-09-07 16:09:59",
+  "backend": "fake_kingston"
+ }
+}

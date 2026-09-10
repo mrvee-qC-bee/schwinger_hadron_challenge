@@ -1,0 +1,11 @@
+{
+ "ex2.3": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "valid path on fake_kingston (0.0 s); cost 13.3643 vs baseline 13.2172 (ratio 1.011)",
+  "time": "2026-09-07 16:10:49",
+  "backend": "fake_kingston",
+  "seconds": 0.0029611587524414062,
+  "ratio": 1.011130296738444
+ }
+}

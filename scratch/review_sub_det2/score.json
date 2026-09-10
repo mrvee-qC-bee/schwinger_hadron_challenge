@@ -1,0 +1,153 @@
+{
+ "ex0.1": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "chi_j = (-1)^j Z_j + I verified at L=5,7",
+  "time": "2026-09-07 16:07:57"
+ },
+ "ex0.2": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "both 2-qubit rotations match their generators at theta=0.5030",
+  "time": "2026-09-07 16:07:57",
+  "theta": 0.5030183338947168
+ },
+ "ex0.3": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "vacuum statevectors match at L=6,8 (fidelities 1.0000000000, 1.0000000000)",
+  "time": "2026-09-07 16:07:57",
+  "fidelities": {
+   "6": 1.0,
+   "8": 1.0
+  }
+ },
+ "ex0.4": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "wavepacket statevectors match at L=6,8 (fidelities 1.0000000000, 1.0000000000)",
+  "time": "2026-09-07 16:07:58",
+  "fidelities": {
+   "6": 1.0,
+   "8": 1.0
+  }
+ },
+ "ex0.5": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "2nd-order step (ratios 7.09, 7.77), Fig.-8 ordering (F=1.0000000000), mitigation returns (F=1.0000000000)",
+  "time": "2026-09-07 16:07:58",
+  "errors": [
+   0.0005891314203255245,
+   8.311590213046975e-05,
+   1.0702531175563519e-05
+  ],
+  "ratios": [
+   7.088071057698991,
+   7.766004206579054
+  ],
+  "fid_physics": 1.0,
+  "fid_mitig": 0.9999999999999994
+ },
+ "ex1.1": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "H (identity excluded) and H_el^(1) match at L=4,8; [H,Q]=0, <Q^2>=0; E0(L=8) = -2.50901 (convention: +m/2*I per site)",
+  "time": "2026-09-07 16:07:58",
+  "E0_L8": -2.509005331524556,
+  "Ls": [
+   4,
+   8
+  ]
+ },
+ "ex1.2": {
+  "points": 4.0,
+  "max": 4,
+  "detail": "electric layer exact at L=4,6 (infidelities 2.2e-16, 4.4e-16); truncation shift 0.0101 confirmed",
+  "time": "2026-09-07 16:07:58",
+  "infidelities": {
+   "4": 2.220446049250313e-16,
+   "6": 4.440892098500626e-16
+  }
+ },
+ "ex1.3": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "fidelities 0.9961/0.9945/0.9929 and energy gaps confirmed at L=4,6,8",
+  "time": "2026-09-07 16:07:58"
+ },
+ "ex1.4": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "Trotter table, dt^2 scaling, Richardson and dominant error all confirmed",
+  "time": "2026-09-07 16:07:58",
+  "ratios": {
+   "2.0": [
+    4.042715634685151,
+    4.022246525290671
+   ],
+   "4.0": [
+    3.940183328544822,
+    3.9841330720820656
+   ]
+  },
+  "dominant_error": "trotter"
+ },
+ "ex1.5": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "bond convergence ok ({8: 0.0561, 20: 0.0029, 40: 0.0007}); X(bond 40) within 0.0008 of the bond-64 reference; wall times {'8': 1.3, '20': 7.0, '40': 33.6}",
+  "time": "2026-09-07 16:07:58"
+ },
+ "ex2.1": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "4 ISA circuits on one 68-qubit path [141, 142, 143]..[36, 41, 42] , 2q-depth 220, 68 layout-consistent observables",
+  "time": "2026-09-07 16:07:58",
+  "backend": "fake_kingston"
+ },
+ "ex2.2": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "gate accounting (5758 logical 2q, 4958 CZ) and noise-matched mitigation circuit confirmed",
+  "time": "2026-09-07 16:08:01"
+ },
+ "ex2.3": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "valid path on fake_kingston (2.0 s); cost 13.2893 vs baseline 13.2172 (ratio 1.005)",
+  "time": "2026-09-07 16:08:04",
+  "backend": "fake_kingston",
+  "seconds": 2.034976005554199,
+  "ratio": 1.005454529683453
+ },
+ "ex2.4": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "flight plan ok (predicted usage 31.5 s) and EstimatorOptions ok",
+  "time": "2026-09-07 16:08:04",
+  "usage_model_s": 31.4912
+ },
+ "ex3.1": {
+  "points": 7.0,
+  "max": 7,
+  "detail": "ODR exact on synthetic CP-symmetric data (L=6,8,34), uncertainty within 25 % of MC, bias formula exact",
+  "time": "2026-09-07 16:08:04"
+ },
+ "ex3.2": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "twirled circuits ISA + equivalent, 96 % dressed CZs, 8 distinct seeds; charge post-selection ok",
+  "time": "2026-09-07 16:08:06",
+  "frame_fraction": [
+   0.9507575757575758,
+   0.9583333333333334,
+   0.946969696969697,
+   0.9431818181818182,
+   0.9696969696969697,
+   0.9659090909090909,
+   0.9507575757575758,
+   0.9696969696969697
+  ]
+ }
+}

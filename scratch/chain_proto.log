@@ -1,0 +1,14 @@
+kingston temp=0.0: best cost=1.2837 restarts=300 0.1s path[:5]=[10, 9, 8, 7, 17]
+kingston temp=0.3: best cost=1.3003 restarts=300 0.1s path[:5]=[100, 101, 116, 121, 122]
+kingston temp=1.0: best cost=1.2815 restarts=300 0.1s path[:5]=[75, 59, 55, 54, 53]
+kingston temp=3.0: best cost=1.2995 restarts=300 0.1s path[:5]=[144, 143, 136, 123, 122]
+fez temp=0.0: best cost=1.0440 restarts=300 0.1s path[:5]=[73, 74, 75, 59, 55]
+fez temp=0.3: best cost=1.0398 restarts=300 0.1s path[:5]=[24, 23, 16, 3, 4]
+fez temp=1.0: best cost=0.9969 restarts=300 0.1s path[:5]=[141, 142, 143, 136, 123]
+fez temp=3.0: best cost=1.0762 restarts=300 0.1s path[:5]=[17, 7, 6, 5, 4]
+marrakesh temp=0.0: best cost=0.9416 restarts=300 0.3s path[:5]=[114, 115, 99, 95, 94]
+marrakesh temp=0.3: best cost=0.9416 restarts=300 0.2s path[:5]=[114, 115, 99, 95, 94]
+marrakesh temp=1.0: best cost=0.9416 restarts=300 0.4s path[:5]=[61, 62, 63, 64, 65]
+marrakesh temp=3.0: best cost=0.9572 restarts=300 0.3s path[:5]=[44, 45, 46, 47, 57]
+kingston O3 layout cost 1.8634247737254708
+kingston hardware layout cost inf on fez: inf

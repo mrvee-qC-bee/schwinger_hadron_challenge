@@ -1,0 +1,12 @@
+bd64 t=8: 125s
+X_ref sites 31..36 [ 0.5093  0.5073 -0.0056 -0.0056  0.5073  0.5093] RMSE_0 0.26870241975969134 C_ref 0.5139001495858513
+vs QDC bd40: max|dX| 0.0007756848008607653 RMSE_W 0.000440710058137433 chi max dev 0.018724153301232227
+vs even-first bd64: max|dX| 0.0235250022780229
+odr       : raw RMSE_W=0.229 C=0.068 | ODR RMSE_W=0.125 C=0.437 quiet=0.021 pts=12.1 retention W min/med/max=0.14/0.21/0.33 centre=[ 0.362  0.247 -0.132 -0.132  0.247  0.362]
+twirl_dd  : raw RMSE_W=0.231 C=0.064 | ODR RMSE_W=0.134 C=0.421 quiet=0.025 pts=11.5 retention W min/med/max=0.13/0.22/0.32 centre=[ 0.332  0.256 -0.127 -0.127  0.256  0.332]
+twirl_only: raw RMSE_W=0.221 C=0.076 | ODR RMSE_W=0.116 C=0.300 quiet=0.016 pts=8.9 retention W min/med/max=0.13/0.26/0.31 centre=[ 0.358  0.232 -0.005 -0.005  0.232  0.358]
+dd_only   : raw RMSE_W=0.228 C=0.022 | ODR RMSE_W=0.235 C=-0.102 quiet=0.022 pts=2.6 retention W min/med/max=-0.06/0.16/0.32 centre=[0.219 0.022 0.222 0.222 0.022 0.219]
+baseline  : raw RMSE_W=0.221 C=0.061 | ODR RMSE_W=0.167 C=0.010 quiet=0.028 pts=5.3 retention W min/med/max=-0.00/0.21/0.44 centre=[0.324 0.184 0.244 0.244 0.184 0.324]
+trex      : raw RMSE_W=0.198 C=0.119 | ODR RMSE_W=0.052 C=0.455 quiet=0.025 pts=15.2 retention W min/med/max=0.14/0.28/0.33 centre=[ 0.428  0.436 -0.023 -0.023  0.436  0.428]
+zne_fold  : raw RMSE_W=0.104 C=0.454 | ODR RMSE_W=0.313 C=0.533 quiet=0.116 pts=5.8 retention W min/med/max=0.16/0.83/2.01 centre=[ 0.494  0.421 -0.076 -0.076  0.421  0.494]
+DONE

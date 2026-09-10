@@ -1,0 +1,182 @@
+nb_part_a: 78 cells (33 markdown, 45 code)
+participant view: no leaked solution markers
+grader stub: check_env
+--- cell   7 [ok]    0.0 s | import fallfest_grader as ff
+--- cell   8 [ok]    2.0 s | import os
+--- cell  10 [ok]    0.0 s | m = 0.5   # electron/positron mass
+68 observables;  chi_0 = SparsePauliOp(['IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIZ', 'IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII'],
+              coeffs=[1.+0.j, 1.+0.j]) 
+                 chi_1 = SparsePauliOp(['IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIZI', 'IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII'],
+              coeffs=[-1.+0.j,  1.+0.j])
+--- cell  13 [ok]    0.0 s | def chiral_condensate_observables(L: int) -> list[SparsePauliOp]:
+grader stub: grade_ex0_1(1 args)
+--- cell  14 [ok]    0.0 s | ff.grade_ex0_1(chiral_condensate_observables)
+--- cell  16 [ok]    0.0 s | def RXYplus(theta: float) -> Gate:
+RXYplus                      vs exp(-i theta/2 G): max deviation 1.1e-16  OK
+RXYminus                     vs exp(+i theta/2 G): max deviation 1.1e-16  OK
+RXXplus (challenge_utils)    vs exp(-i theta/2 G): max deviation 7.6e-17  OK
+--- cell  18 [ok]    0.0 s | from scipy.linalg import expm
+grader stub: grade_ex0_2(2 args)
+--- cell  19 [ok]    0.0 s | ff.grade_ex0_2(RXYplus, RXYminus)
+68 qubits, OrderedDict({'h': 1064, 's': 532, 'z': 532, 'cx': 532, 'sdg': 532, 'ry': 266, 'rz': 266, 'u': 34})
+--- cell  21 [ok]    0.1 s | def prep_strong_coupling_vacuum(L: int) -> QuantumCircuit:
+grader stub: grade_ex0_3(1 args)
+--- cell  22 [ok]    0.0 s | ff.grade_ex0_3(prep_vacuum)
+68 qubits, OrderedDict({'h': 1084, 's': 542, 'z': 542, 'cx': 542, 'sdg': 542, 'ry': 271, 'rz': 271, 'u': 34})
+--- cell  24 [ok]    0.0 s | def wave_prep_rotate_O_11(qc: QuantumCircuit, theta: float, L: int) ->
+grader stub: grade_ex0_4(1 args)
+--- cell  25 [ok]    0.0 s | ff.grade_ex0_4(prep_wave)
+wave / vacuum circuit 2q gate counts: 542 542
+--- cell  27 [ok]    0.1 s | def prep_vacuum_for_subtraction(L: int, eps: float = 0.9e-4) -> Quantu
+MPS t=0 in 4.2 s;  max |deviation from QDC files|: wave 1.2e-11, vacuum 1.1e-04
+--- cell  29 [ok]    4.3 s | from qiskit_aer.primitives import EstimatorV2 as AerEstimatorV2
+--- cell  30 [ok]    0.0 s | fig, ax = plt.subplots(1, 1, figsize=(15, 4))
+logical 2q depth (physics, calibration): 256 256
+--- cell  32 [ok]    2.1 s | def trotter_step(qc: QuantumCircuit, L: int, time_step: float, m: floa
+L=6, t=4: calibration circuit returns to the initial state with fidelity 1.000000000000
+--- cell  34 [ok]    0.2 s | qc_init6 = prep_wave(6, vacuum_prep_theta_OV_1, vacuum_prep_theta_OV_3
+grader stub: grade_ex0_5(3 args)
+--- cell  35 [ok]    0.0 s | ff.grade_ex0_5(trotter_step, evolve_circuits, prep_wave)
+reference: organizer MPS, bond dimension 64;  peaks [0.525 0.496 0.496 0.525], dip [-0.002 -0.002], contrast C_ref = 0.512, RMSE_0 = sqrt(mean X_ref[W]^2) = 0.270
+--- cell  37 [ok]    0.0 s | MPS_REF_PATH = f"{REF_DIR}/mps_reference_L34.npz"
+L=4 full H: 44 Pauli terms;  truncated H: 35 terms
+--- cell  40 [ok]    0.0 s | from scipy.sparse.linalg import eigsh, expm_multiply
+L=4: ||[H,Q]|| = 0.0e+00, ||[H_trunc,Q]|| = 0.0e+00;  ground state <Q> = +0.0e+00, <Q^2> = 8.9e-16;  ADAPT vacuum <Q^2> = 2.8e-16
+      E0(full) = -1.18587   E0(truncated) = -1.41087   (difference -0.225: constants + dropped long-range terms)
+L=6: ||[H,Q]|| = 0.0e+00, ||[H_trunc,Q]|| = 0.0e+00;  ground state <Q> = +5.6e-17, <Q^2> = -8.3e-16;  ADAPT vacuum <Q^2> = -7.4e-15
+      E0(full) = -1.84744   E0(truncated) = -2.31714   (difference -0.470: constants + dropped long-range terms)
+L=8: ||[H,Q]|| = 0.0e+00, ||[H_trunc,Q]|| = 0.0e+00;  ground state <Q> = +0.0e+00, <Q^2> = -1.9e-14;  ADAPT vacuum <Q^2> = -1.6e-14
+      E0(full) = -2.50901   E0(truncated) = -3.31305   (difference -0.804: constants + dropped long-range terms)
+
+E0_L8 = -2.50901
+--- cell  41 [ok]    3.1 s | def total_charge(L: int) -> SparsePauliOp:
+grader stub: grade_ex1_1(3 args)
+--- cell  42 [ok]    0.0 s | ff.grade_ex1_1(schwinger_hamiltonian, electric_hamiltonian_truncated, 
+L=4: max infidelity between electric_layer and exp(-i t H_el^(1)) over 3 random states: 1.3e-15
+L=6: max infidelity between electric_layer and exp(-i t H_el^(1)) over 3 random states: 2.0e-15
+--- cell  44 [ok]    0.0 s | def electric_layer(L: int, t: float, g: float = 0.3) -> QuantumCircuit
+truncation_shift (L=8, t=4) = 0.0101
+--- cell  45 [ok]    1.8 s | def chi_from_state(psi, L: int) -> np.ndarray:
+grader stub: grade_ex1_2(2 args)
+--- cell  46 [ok]    0.0 s | ff.grade_ex1_2(electric_layer, truncation_shift)
+L=4: fidelity 0.9961   (1-F)/(2L) = 4.87e-04   E_ADAPT - E0 = 0.00635   max_j |d<chi_j>| = 0.0382
+L=6: fidelity 0.9945   (1-F)/(2L) = 4.56e-04   E_ADAPT - E0 = 0.00939   max_j |d<chi_j>| = 0.0383
+L=8: fidelity 0.9929   (1-F)/(2L) = 4.42e-04   E_ADAPT - E0 = 0.01244   max_j |d<chi_j>| = 0.0383
+--- cell  48 [ok]    0.4 s | vqe_fidelity, vqe_energy_gap, vqe_chi_error = {}, {}, {}
+grader stub: grade_ex1_3(2 args)
+--- cell  49 [ok]    0.0 s | ff.grade_ex1_3(vqe_fidelity, vqe_energy_gap)
+(23.4 s)
+  t    dt=1      dt=0.5    dt=0.25   ratio(1/0.5)  ratio(0.5/0.25)
+  2   0.2018    0.0499    0.0124     4.04          4.02
+  4   0.0948    0.0241    0.0060     3.94          3.98
+
+Richardson (t=4, dt=0.5 & 0.25): max error 1.86e-04  (vs 6.04e-03 for dt=0.25 alone)
+L=8, t=4 error budget: trotter(dt=1) 0.0948 | truncation 0.0101 | state_prep 0.0383  ->  dominant_error = 'trotter'
+--- cell  51 [ok]   23.4 s | def trotter_X(t: float, dt: float, L: int = L8) -> np.ndarray:
+grader stub: grade_ex1_4(3 args)
+--- cell  52 [ok]    0.0 s | ff.grade_ex1_4(trotter_table, richardson_error, dominant_error)
+bond   8:    1.6 s   centre X = [ 0.545  0.532 -0.017 -0.01   0.539  0.558]
+bond  12:    2.7 s   centre X = [ 0.517  0.515 -0.007 -0.007  0.513  0.515]
+bond  20:    7.6 s   centre X = [ 0.511  0.51  -0.006 -0.006  0.51   0.512]
+bond  40:   39.6 s   centre X = [ 0.51   0.508 -0.006 -0.006  0.508  0.51 ]
+
+bond   max|X(bond) - X(64)|   seconds
+   8   0.0481               1.6
+  12   0.0279               2.7
+  20   0.0223               7.6
+  40   0.0228               39.6
+QDC bond-40 file vs bond 64: 0.0228;  your bond 40 vs QDC bond-40 file: 0.0000
+--- cell  54 [ok]   52.8 s | bonds = [8, 12, 20, 40] + ([64] if RUN_BOND_64 else [])
+grader stub: grade_ex1_5(3 args)
+--- cell  55 [ok]    0.0 s | ff.grade_ex1_5(mps_err, mps_seconds, X_bond40)
+fake_kingston 156 qubits; basis: ['cz', 'delay', 'id', 'if_else', 'measure', 'measure_2', 'reset', 'rz', 'sx', 'x']
+--- cell  58 [ok]    0.6 s | from qiskit.transpiler import generate_preset_pass_manager
+transpiled in 1.1 s
+layout: [141, 142, 143, 136, 123, 124, 125, 126, 127, 128, 129, 118, 109, 110, 111, 98, 91, 90, 89, 78, 69, 68, 67, 57, 47, 48, 49, 50, 51, 58, 71, 72, 73, 74, 75, 59, 55, 54, 53, 39, 33, 34, 35, 19, 15, 14, 13, 12, 11, 18, 31, 30, 29, 28, 27, 17, 7, 6, 5, 4, 3, 16, 23, 22, 21, 36, 41, 42]
+swap-free (initial == final layout): True
+2q depth = 220, ops = {'sx': 10247, 'rz': 9550, 'cz': 4958, 'x': 217}
+--- cell  59 [ok]    1.7 s | pm_ref = generate_preset_pass_manager(optimization_level=3, backend=ba
+2q depth per circuit: [220, 215, 220, 215]
+CZ count per circuit: [4958, 4790, 4958, 4790]
+--- cell  60 [ok]    3.0 s | pm_pinned = generate_preset_pass_manager(optimization_level=3, backend
+grader stub: grade_ex2_1(3 args)
+--- cell  61 [ok]    0.0 s | ff.grade_ex2_1(circuits_all_isa, observables_isa, backend)
+logical 2q gates (physics): 5758   ->  4958 CZ after transpilation (800 fewer: 462 from the merged odd-bond layers at 7 junctions x 33 bonds x 2 CZ, the rest from R_XX gates absorbed into neighbouring barbell blocks)
+QDC calibration circuit: 4790 CZ  ->  168 CZ fewer than the physics circuit
+barrier variant:         5024 CZ  ->  +66 vs the physics circuit
+--- cell  63 [ok]    2.2 s | from collections import Counter
+L=6, t=4: return fidelity of the matched calibration circuit = 0.9999999708 (1-F = 2.9e-08)
+          CZ physics 398 | matched 398 | QDC naive 370;  per-edge distribution identical: True
+L=34, t=8: CZ physics 4958 | matched calibration 4958 | 2q depth 220 vs 220;  per-edge identical: True
+--- cell  64 [ok]    2.3 s | def evolve_circuits_matched(qc_init: QuantumCircuit, L: int, t: float,
+CZ count per circuit: [4958, 4958, 4958, 4958]
+--- cell  66 [ok]    2.7 s | qc_wave_mitig, qc_vacuum_mitig = qc_wave_mitig_matched, qc_vacuum_miti
+grader stub: grade_ex2_2(6 args)
+--- cell  67 [ok]    0.0 s | ff.grade_ex2_2(n2q_logical, n_cz_physics, evolve_circuits_matched, pre
+select_chain: 15.0 s;  chain = [103, 104, 105, 117, 125, 126, 127, 128, 129, 118, 109, 110, 111, 98, 91, 90, 89, 78, 69, 68, 67, 57, 47, 48, 49, 50, 51, 58, 71, 72, 73, 74, 75, 59, 55, 54, 53, 39, 33, 34, 35, 19, 15, 14, 13, 12, 11, 18, 31, 30, 29, 28, 27, 26, 25, 37, 45, 44, 43, 42, 41, 36, 21, 22, 23, 16, 3, 4]
+expected errors per circuit: transpiler layout 13.38  |  selected chain 13.09  (+2.1 % fewer);  exp(-cost): 1.55e-06 vs 2.06e-06
+--- cell  69 [ok]   15.4 s | def target_error_tables(backend, dead: float = 0.5):
+CZ per circuit on the chain: [4958, 4958, 4958, 4958]  2q depth: [220, 220, 220, 220]
+predicted per-site retention prod(1-eps) (optimistic, no light-cone propagation): min 0.39, median 0.73, max 0.89
+--- cell  70 [ok]    3.1 s | pm_chain = generate_preset_pass_manager(optimization_level=3, backend=
+grader stub: grade_ex2_3(2 args)
+--- cell  71 [ok]    0.0 s | ff.grade_ex2_3(select_chain, backend)
+{
+ "backend": "fake_kingston",
+ "mode": "job",
+ "cap_s": 180,
+ "seconds_per_execution": 0.00045,
+ "overhead_s_per_job": 2.0,
+ "canary": {
+  "t": 0,
+  "n_pubs": 2,
+  "num_randomizations": 16,
+  "shots_per_randomization": 128,
+  "executions": 4096,
+  "usage_s": 3.8
+ },
+ "main": {
+  "t": 8,
+  "n_pubs": 4,
+  "num_randomizations": 64,
+  "shots_per_randomization": 256,
+  "executions": 65536,
+  "usage_s": 31.5
+ },
+ "improvement": {
+  "t": 8,
+  "n_pubs": 4,
+  "num_randomizations": 32,
+  "shots_per_randomization": 256,
+  "executions": 32768,
+  "usage_s": 16.7,
+  "budget_s": 60
+ },
+ "total_usage_s": 52.0
+}
+
+predicted total usage 52.0 s of the 180 s cap (margin 128 s = one retry of the main run)
+twirling: TwirlingOptions(enable_gates=True, enable_measure=True, num_randomizations=64, shots_per_randomization=256, strategy=Unset)
+DD: DynamicalDecouplingOptions(enable=True, sequence_type='XpXm', extra_slack_distribution=Unset, scheduling_method=Unset, skip_reset_qubits=Unset) | resilience_level: 0 | max_execution_time: 180 | default_shots: 16384
+--- cell  73 [ok]    0.0 s | from qiskit_ibm_runtime import EstimatorV2
+4 PUBs x 68 observables on fake_kingston; job would execute 65536 circuits (~31.5 s)
+Estimator options ready: 64 twirls x 256 shots
+--- cell  75 [ok]    0.0 s | pubs = [(qc, obs_list) for qc, obs_list in zip(circuits_all_isa, [obse
+grader stub: grade_ex2_4(3 args)
+--- cell  76 [ok]    0.0 s | ff.grade_ex2_4(flight_plan, estimator_options, circuits_all_isa)
+
+=== per-cell runtime (slowest first) ===
+cell  54    52.8 s [ok] bonds = [8, 12, 20, 40] + ([64] if RUN_BOND_64 else [])
+cell  51    23.4 s [ok] def trotter_X(t: float, dt: float, L: int = L8) -> np.ndarray:
+cell  69    15.4 s [ok] def target_error_tables(backend, dead: float = 0.5):
+cell  29     4.3 s [ok] from qiskit_aer.primitives import EstimatorV2 as AerEstimatorV2
+cell  41     3.1 s [ok] def total_charge(L: int) -> SparsePauliOp:
+cell  70     3.1 s [ok] pm_chain = generate_preset_pass_manager(optimization_level=3, backend=
+cell  60     3.0 s [ok] pm_pinned = generate_preset_pass_manager(optimization_level=3, backend
+cell  66     2.7 s [ok] qc_wave_mitig, qc_vacuum_mitig = qc_wave_mitig_matched, qc_vacuum_miti
+cell  64     2.3 s [ok] def evolve_circuits_matched(qc_init: QuantumCircuit, L: int, t: float,
+cell  63     2.2 s [ok] from collections import Counter
+cell  32     2.1 s [ok] def trotter_step(qc: QuantumCircuit, L: int, time_step: float, m: floa
+cell   8     2.0 s [ok] import os
+
+TOTAL: 121.8 s over 45 code cells; failures: 0; leaks: 0

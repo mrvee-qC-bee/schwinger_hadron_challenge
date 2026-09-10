@@ -1,0 +1,149 @@
+== 1. statevectors (prep_vacuum / prep_wave at L=6,8; t=2 physics circuit at L=6)
+  sv_vacuum_L6: shape (4096,) dtype complex128 (first 4: [-1.209555e-49+2.665167e-49j  6.012590e-49-7.506044e-49j
+ -2.616131e-49-9.143158e-50j  6.622004e-34+1.092648e-33j])
+  sv_wave_L6: shape (4096,) dtype complex128 (first 4: [-1.128586e-49+1.356299e-49j  2.073754e-50-9.513320e-49j
+ -3.993550e-49-1.221581e-49j  4.456040e-34+6.750777e-34j])
+  chi_wave_t0_L6 = [0.185532 0.339127 0.334853 0.341564 0.150557 1.766201 1.766201 0.150557 0.341564 0.334853 0.339127 0.185532]
+  chi_vacuum_t0_L6 = [0.185532 0.339127 0.334853 0.341564 0.341325 0.341317 0.341317 0.341325 0.341564 0.334853 0.339127 0.185532]
+  sv_vacuum_L8: shape (65536,) dtype complex128 (first 4: [-7.142234e-66-3.883780e-66j -1.057155e-65+8.269674e-65j
+ -2.302845e-66+1.370359e-65j -9.908224e-51-3.061878e-50j])
+  sv_wave_L8: shape (65536,) dtype complex128 (first 4: [-7.418147e-66-3.276455e-66j  1.505794e-65+6.885210e-65j
+  2.896391e-66-2.003134e-66j -1.122732e-50-3.839149e-50j])
+  chi_wave_t0_L8 = [0.185532 0.339127 0.334853 0.341564 0.341325 0.341318 0.15055  1.7662   1.7662   0.15055  0.341318 0.341325 0.341564 0.334853 0.339127 0.185532]
+  chi_vacuum_t0_L8 = [0.185532 0.339127 0.334853 0.341564 0.341325 0.341318 0.341317 0.341318 0.341318 0.341317 0.341318 0.341325 0.341564 0.334853 0.339127 0.185532]
+  sv_physics_t2_L6: shape (4096,) dtype complex128 (first 4: [ 1.007243e-49-7.257331e-49j  5.301531e-48+1.847415e-48j
+ -2.391349e-48+9.859095e-49j -3.356204e-33+1.615513e-32j])
+  mitig_return_fidelity_t2_L6 = 0.9999999999998712
+  chi_vacuum_sub_t0_L6 = [0.185532 0.339127 0.334853 0.341564 0.341347 0.341208 0.341208 0.341347 0.341564 0.334853 0.339127 0.185532]
+== 2. exact ground states / energies (FULL H, +m/2*I convention) and ADAPT-VQE quality
+  E0_L4 = -1.185874125411172
+  gs_L4: shape (256,) dtype complex128 (first 4: [-5.385616e-18+2.833094e-18j  6.310710e-18-3.577594e-18j
+  8.021853e-18+2.855557e-17j -1.405194e-17-1.725704e-17j])
+  E_adapt_L4 = -1.1795258403334816
+  vqe_fid_L4 = 0.9961025591037029
+  E0_L6 = -1.8474360183512792
+  gs_L6: shape (4096,) dtype complex128 (first 4: [ 1.321258e-17+4.043891e-17j -1.269266e-17-8.366484e-18j
+ -5.604663e-17+2.014078e-18j  6.112609e-18+1.128703e-17j])
+  E_adapt_L6 = -1.8380456719254405
+  vqe_fid_L6 = 0.9945245970510395
+  E0_L8 = -2.509005331524566
+  gs_L8: shape (65536,) dtype complex128 (first 4: [-2.326897e-15-1.473950e-14j  3.806568e-16-5.134085e-16j
+ -8.499015e-17-9.567778e-16j  2.039599e-16-1.806558e-16j])
+  E_adapt_L8 = -2.496565502214061
+  vqe_fid_L8 = 0.9929328629704162
+== 3. Hamiltonian Pauli dictionaries (full & truncated) at L=4,6,8
+  H_full_labels_L4: shape (44,) dtype <U8 (first 4: ['IIIIIIII' 'IIIIIIIZ' 'IIIIIIZI' 'IIIIIZII'])
+  H_full_coeffs_L4: shape (44,) dtype complex128 (first 4: [ 2.36  +0.j  0.34  +0.j -0.1825+0.j  0.3175+0.j])
+  H_trunc_labels_L4: shape (35,) dtype <U8 (first 4: ['IIIIIIII' 'IIIIIIIZ' 'IIIIIIZI' 'IIIIIZII'])
+  H_trunc_coeffs_L4: shape (35,) dtype complex128 (first 4: [ 2.    +0.j  0.295 +0.j -0.2275+0.j  0.2725+0.j])
+  Hel_trunc_labels_L4 = ['IIIIIIZZ' 'IIZZIIII' 'IIIIZZII' 'ZZIIIIII' 'IIIIIIIZ' 'IIIIIIZI' 'IIIIIZII' 'IIZIIIII' 'IZIIIIII' 'ZIIIIIII' 'IIIIIZIZ' 'IIIIIZZI' 'IIIIZIIZ' 'IIIIZIZI' 'IZIZIIII' 'ZIIZIIII' 'IZZIIIII' 'ZIZIIIII']
+  Hel_trunc_coeffs_L4 = [ 0.05625+0.j  0.01125+0.j  0.01125+0.j  0.05625+0.j  0.045  +0.j  0.0225 +0.j  0.0225 +0.j -0.0225 +0.j -0.0225 +0.j -0.045  +0.j  0.03375+0.j  0.03375+0.j  0.01125+0.j  0.01125+0.j  0.01125+0.j
+  0.01125+0.j  0.03375+0.j  0.03375+0.j]
+  H_full_labels_L6: shape (90,) dtype <U12 (first 4: ['IIIIIIIIIIII' 'IIIIIIIIIIIZ' 'IIIIIIIIIIZI' 'IIIIIIIIIZII'])
+  H_full_coeffs_L6: shape (90,) dtype complex128 (first 4: [ 3.81  +0.j  0.385 +0.j -0.1375+0.j  0.3625+0.j])
+  H_trunc_labels_L6: shape (57,) dtype <U12 (first 4: ['IIIIIIIIIIII' 'IIIIIIIIIIIZ' 'IIIIIIIIIIZI' 'IIIIIIIIIZII'])
+  H_trunc_coeffs_L6: shape (57,) dtype complex128 (first 4: [ 3.    +0.j  0.295 +0.j -0.2275+0.j  0.295 +0.j])
+  Hel_trunc_labels_L6: shape (32,) dtype <U12 (first 4: ['IIIIIIIIIIZZ' 'IIIIZZIIIIII' 'IIIIIIIIZZII' 'IIZZIIIIIIII'])
+  Hel_trunc_coeffs_L6: shape (32,) dtype complex128 (first 4: [0.10125+0.j 0.01125+0.j 0.05625+0.j 0.05625+0.j])
+  H_full_labels_L8: shape (152,) dtype <U16 (first 4: ['IIIIIIIIIIIIIIII' 'IIIIIIIIIIIIIIIZ' 'IIIIIIIIIIIIIIZI'
+ 'IIIIIIIIIIIIIZII'])
+  H_full_coeffs_L8: shape (152,) dtype complex128 (first 4: [ 5.44  +0.j  0.43  +0.j -0.0925+0.j  0.4075+0.j])
+  H_trunc_labels_L8: shape (79,) dtype <U16 (first 4: ['IIIIIIIIIIIIIIII' 'IIIIIIIIIIIIIIIZ' 'IIIIIIIIIIIIIIZI'
+ 'IIIIIIIIIIIIIZII'])
+  H_trunc_coeffs_L8: shape (79,) dtype complex128 (first 4: [ 4.    +0.j  0.295 +0.j -0.2275+0.j  0.295 +0.j])
+== 4. exact evolution: truncation shift (L=8, t=4) and exact X profiles
+  X_exact_trunc_L8_t2 = [-4.170287e-04  3.972979e-03  2.744938e-04  1.600938e-02 -1.709121e-02  1.771607e-01  9.832975e-02  1.187112e+00  1.187112e+00  9.832975e-02  1.771607e-01 -1.709121e-02  1.600938e-02  2.744938e-04
+  3.972979e-03 -4.170287e-04]
+  X_exact_trunc_L8_t4 = [-5.583984e-03  8.001760e-03 -3.371317e-04  4.033901e-02  3.505794e-02  3.891810e-01  3.022497e-01  6.016401e-01  6.016401e-01  3.022497e-01  3.891810e-01  3.505794e-02  4.033901e-02 -3.371317e-04
+  8.001760e-03 -5.583984e-03]
+  X_exact_full_L8_t4 = [-0.000884  0.004204 -0.008215  0.050429  0.035964  0.379083  0.304649  0.601389  0.601389  0.304649  0.379083  0.035964  0.050429 -0.008215  0.004204 -0.000884]
+  truncation_shift_array_L8_t4 = [ 0.0047   -0.003798 -0.007878  0.01009   0.000906 -0.010098  0.0024   -0.000251 -0.000251  0.0024   -0.010098  0.000906  0.01009  -0.007878 -0.003798  0.0047  ]
+  truncation_shift_L8_t4 = 0.010098067369575858
+  X_exact_trunc_L6_t4 = [-0.012227  0.037575  0.031183  0.381264  0.310814  0.609639  0.609639  0.310814  0.381264  0.031183  0.037575 -0.012227]
+  X_exact_full_L6_t4 = [-0.014189  0.044086  0.033359  0.381314  0.305521  0.602494  0.602494  0.305521  0.381314  0.033359  0.044086 -0.014189]
+  truncation_shift_array_L6_t4 = [-1.962170e-03  6.510664e-03  2.175967e-03  4.944284e-05 -5.292973e-03 -7.144407e-03 -7.144407e-03 -5.292973e-03  4.944284e-05  2.175967e-03  6.510664e-03 -1.962170e-03]
+  truncation_shift_L6_t4 = 0.0071444066799862815
+== 5. Trotter table at L=8 (max_j |X_trotter - X_exact_trunc|), ratios, Richardson
+  trotter_table_t2_dt1 = 0.20176867243681929
+  X_trotter_L8_t2_dt1 = [-1.134095e-04  3.230239e-03  3.317733e-04  1.384515e-02 -8.106003e-03  1.650312e-01  9.418398e-02  1.388880e+00  1.388880e+00  9.418398e-02  1.650312e-01 -8.106003e-03  1.384515e-02  3.317733e-04
+  3.230239e-03 -1.134095e-04]
+  trotter_table_t2_dt0.5 = 0.04990919240168945
+  X_trotter_L8_t2_dt0.5 = [-3.276207e-04  3.824985e-03  3.151151e-04  1.553201e-02 -1.444478e-02  1.748360e-01  9.664768e-02  1.237021e+00  1.237021e+00  9.664768e-02  1.748360e-01 -1.444478e-02  1.553201e-02  3.151151e-04
+  3.824985e-03 -3.276207e-04]
+  trotter_table_t2_dt0.25 = 0.012408287778453042
+  X_trotter_L8_t2_dt0.25 = [-3.940176e-04  3.937822e-03  2.869637e-04  1.589175e-02 -1.640888e-02  1.766234e-01  9.786892e-02  1.199520e+00  1.199520e+00  9.786892e-02  1.766234e-01 -1.640888e-02  1.589175e-02  2.869637e-04
+  3.937822e-03 -3.940176e-04]
+  trotter_ratio_t2_1_05 = 4.042715634685151
+  trotter_ratio_t2_05_025 = 4.022246525290671
+  richardson_error_t2 = 9.201376262990557e-05
+  trotter_table_t4_dt1 = 0.09477142499177194
+  X_trotter_L8_t4_dt1 = [-0.0038    0.009573  0.00572   0.03173   0.017181  0.391977  0.296063  0.696412  0.696412  0.296063  0.391977  0.017181  0.03173   0.00572   0.009573 -0.0038  ]
+  trotter_table_t4_dt0.5 = 0.024052541998540122
+  X_trotter_L8_t4_dt0.5 = [-0.005132  0.008483  0.001422  0.038646  0.030055  0.390781  0.303523  0.625693  0.625693  0.303523  0.390781  0.030055  0.038646  0.001422  0.008483 -0.005132]
+  trotter_table_t4_dt0.25 = 0.006037082989793441
+  X_trotter_L8_t4_dt0.25 = [-5.469988e-03  8.125227e-03  1.130728e-04  3.994653e-02  3.378133e-02  3.896160e-01  3.027077e-01  6.076772e-01  6.076772e-01  3.027077e-01  3.896160e-01  3.378133e-02  3.994653e-02  1.130728e-04
+  8.125227e-03 -5.469988e-03]
+  trotter_ratio_t4_1_05 = 3.940183328544822
+  trotter_ratio_t4_05_025 = 3.9841330720820656
+  richardson_error_t4 = 0.00018635804434818937
+  dominant_error = trotter
+== 5b. noiseless Trotter circuit at L=6, t=4 (4 steps, dt=1): the ex 3.3 target
+  chi_wave_trotter_L6_t4 = [0.175494 0.343561 0.302747 0.673416 0.590962 0.994582 0.994582 0.590962 0.673416 0.302747 0.343561 0.175494]
+  chi_vacuum_trotter_L6_t4 = [0.181493 0.312437 0.287012 0.29037  0.286179 0.289341 0.289341 0.286179 0.29037  0.287012 0.312437 0.181493]
+  X_trotter_L6_t4 = [-0.005999  0.031124  0.015735  0.383046  0.304783  0.705241  0.705241  0.304783  0.383046  0.015735  0.031124 -0.005999]
+  trotter_vs_exact_L6_t4 = 0.09560226355950618
+== 6. window constants / hardware reference
+  window_lo = 25
+  window_hi = 42
+  C_ref = 0.515
+  peak_sites = [31 32 35 36]
+  dip_sites = [33 34]
+  X_ref_t8_bd64: shape (68,) dtype float64 (first 4: [4.154353e-06 5.212604e-05 3.895739e-05 5.802696e-05])
+  RMSE_0 = 0.26870241975969134
+  C_ref_measured = 0.5139001495858513
+  X_ref_t8_bd128: shape (68,) dtype float64 (first 4: [2.138967e-06 1.471438e-05 8.839442e-06 1.522987e-05])
+  bd64_vs_bd128_max = 0.0009123281825058616
+== 7. frozen fake-backend target summaries
+  tgt_kingston_num_qubits = 156
+  tgt_kingston_edges: shape (176, 2) dtype int64 (first 4: [0 1 1 2])
+  tgt_kingston_cz_error: shape (176,) dtype float64 (first 4: [0.00115  0.001207 0.001156 0.001524])
+  tgt_kingston_sx_error: shape (156,) dtype float64 (first 4: [0.000203 0.000124 0.00016  0.000167])
+  tgt_kingston_x_error: shape (156,) dtype float64 (first 4: [0.000203 0.000124 0.00016  0.000167])
+  tgt_kingston_readout_error: shape (156,) dtype float64 (first 4: [0.009521 0.168213 0.007935 0.007202])
+  tgt_kingston_t1: shape (156,) dtype float64 (first 4: [0.000384 0.000261 0.000283 0.000305])
+  tgt_kingston_t2: shape (156,) dtype float64 (first 4: [0.000354 0.000329 0.00011  0.0004  ])
+  fake_kingston: 176 edges, CZ err median 0.0018, #CZ>=0.5: 7, RO median 0.0095, #RO>=0.5: 1, T1 None: 1
+  tgt_fez_num_qubits = 156
+  tgt_fez_edges: shape (176, 2) dtype int64 (first 4: [0 1 1 2])
+  tgt_fez_cz_error: shape (176,) dtype float64 (first 4: [0.010157 0.003772 0.002985 0.00435 ])
+  tgt_fez_sx_error: shape (156,) dtype float64 (first 4: [0.000764 0.000178 0.000198 0.000239])
+  tgt_fez_x_error: shape (156,) dtype float64 (first 4: [0.000764 0.000178 0.000198 0.000239])
+  tgt_fez_readout_error: shape (156,) dtype float64 (first 4: [0.011475 0.011719 0.004883 0.015869])
+  tgt_fez_t1: shape (156,) dtype float64 (first 4: [4.880621e-05 2.557052e-04 2.743943e-04 2.197205e-04])
+  tgt_fez_t2: shape (156,) dtype float64 (first 4: [4.237960e-05 3.027909e-04 9.998472e-05 2.155435e-04])
+  fake_fez: 176 edges, CZ err median 0.0039, #CZ>=0.5: 7, RO median 0.0076, #RO>=0.5: 0, T1 None: 0
+  tgt_marrakesh_num_qubits = 156
+  tgt_marrakesh_edges: shape (176, 2) dtype int64 (first 4: [0 1 1 2])
+  tgt_marrakesh_cz_error: shape (176,) dtype float64 (first 4: [0.00174  0.001548 0.003202 0.004048])
+  tgt_marrakesh_sx_error: shape (156,) dtype float64 (first 4: [0.000135 0.000103 0.000205 0.0001  ])
+  tgt_marrakesh_x_error: shape (156,) dtype float64 (first 4: [0.000135 0.000103 0.000205 0.0001  ])
+  tgt_marrakesh_readout_error: shape (156,) dtype float64 (first 4: [0.01123  0.005371 0.00415  0.01001 ])
+  tgt_marrakesh_t1: shape (156,) dtype float64 (first 4: [0.000366 0.000183 0.000277 0.000345])
+  tgt_marrakesh_t2: shape (156,) dtype float64 (first 4: [6.142835e-05 1.871786e-04 3.302594e-04 3.015468e-04])
+  fake_marrakesh: 176 edges, CZ err median 0.0033, #CZ>=0.5: 13, RO median 0.0095, #RO>=0.5: 0, T1 None: 0
+== 8. gate accounting at L=34 (logical 2q counts; FakeKingston O3 seed 42 CZ count)
+  n2q_logical_t8 = 5758
+  n2q_logical_16steps = 10974
+  n2q_logical_32steps = 21406
+  n_cz_physics_t8_kingston_O3_seed42 = 4958
+  depth2q_physics_t8_kingston_O3_seed42 = 220
+  layout_t8_kingston_O3_seed42: shape (68,) dtype int64 (first 4: [141 142 143 136])
+  n_cz_physics_t8_kingston_O1_seed42 = 5292
+  (transpile took 0.9s)
+== 9. grader-owned ISA circuit for ex 3.2 (L=6, t=2 physics circuit, FakeKingston O1 seed 42) as QPY bytes
+  isa_circuit_L6_t2_kingston_O1_qpy: shape (100621,) dtype uint8 (first 4: [81 73 83 75])
+  isa_circuit_L6_t2_kingston_O1_layout = [ 0  1  2  3  4  5  6  7  8  9 10 11]
+  isa_circuit_L6_t2_kingston_O1_ncz = 264
+  sv_physics_t2_L6_check = 0.9999999999998141
+
+wrote /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/reference_data/grader_refs.npz (116 keys, 3.6 MB) in 24.9s

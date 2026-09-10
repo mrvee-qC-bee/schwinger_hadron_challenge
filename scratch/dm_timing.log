@@ -1,0 +1,3 @@
+density_matrix {}: 466.9s evs[:3]=[0.2503 0.4423 0.4156] f[:3]=[0.921 0.852 0.818]
+statevector {'shots': 400, 'seed_simulator': 11}: 5.2s evs[:3]=[0.2487 0.4451 0.4107] f[:3]=[0.932 0.831 0.82 ]
+matrix_product_state {'shots': 400, 'seed_simulator': 11}: 16.6s evs[:3]=[0.2487 0.4451 0.4107] f[:3]=[0.932 0.831 0.82 ]

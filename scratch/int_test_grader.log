@@ -1,0 +1,102 @@
+== check_env
+  qiskit               2.5.2
+  qiskit_ibm_runtime   0.49.0
+  qiskit_aer           0.17.2
+  numpy                2.3.0
+  scipy                1.18.0
+  reference data: ok, ok; submission dir: /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/scratch/submission_test
+  environment OK
+
+== results
+exercise variant                                             pts  verdict
+ex0.1   perfect                                        2.0/2    [ex0.1] 2.0/2 PASS chi_j = (-1)^j Z_j + I verified at L=5,7 [0.0s]
+ex0.1   wrong sign (-1)^(j+1)                          0.0/2    [ex0.1] 0.0/2 -- hint: L=5: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings); L=7: chi_0 differs fro [0.0s]
+ex0.2   perfect                                        2.0/2    [ex0.2] 2.0/2 PASS both 2-qubit rotations match their generators at theta=0.5030 [0.0s]
+ex0.2   RXYminus with opposite sign                    1.0/2    [ex0.2] 1.0/2 -- hint: RXYminus(theta) != exp(+i theta/2 (XY-YX)) (max dev 9.64e-01) (looks like opposite sign) [0.0s]
+ex0.3   perfect                                        2.0/2    [ex0.3] 2.0/2 PASS vacuum statevectors match at L=6,8 (fidelities 1.0000000000, 1.0000000000) [0.3s]
+ex0.3   function raises                                0.0/2    [ex0.3] 0.0/2 -- hint: L=6: raised ValueError: boom (ValueError: boom); L=8: raised ValueError: boom (ValueError: boom) [0.0s]
+ex0.3   OV_3 interior range(2, L-1)                    0.0/2    [ex0.3] 0.0/2 -- hint: L=6: fidelity with the reference vacuum = 0.998809; L=8: fidelity with the reference vacuum = 0.998809 [0.2s]
+ex0.4   perfect                                        2.0/2    [ex0.4] 2.0/2 PASS wavepacket statevectors match at L=6,8 (fidelities 1.0000000000, 1.0000000000) [0.5s]
+ex0.4   prep_wave ignores L                            1.0/2    [ex0.4] 1.0/2 -- hint: L=6: circuit has 16 qubits, expected 12 (does prep_wave ignore L?) [0.5s]
+ex0.4   vacuum only                                    0.0/2    [ex0.4] 0.0/2 -- hint: L=6: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing; L=8: this is the vacuum -- the O_11 / O_22 wavepacket [0.5s]
+ex0.5   perfect                                        2.0/2    [ex0.5] 2.0/2 PASS 2nd-order step (ratios 7.09, 7.77), Fig.-8 ordering (F=1.0000000000), mitigation returns (F=1.0000000000) [0.4s]
+ex0.5   even-first kinetic ordering                    1.5/2    [ex0.5] 1.5/2 -- hint: valid second-order step but not the Fig. 8 ordering (odd bonds (1,2),(3,4),.. first in the first kinetic half-step, even bonds  [0.4s]
+ex0.5   first-order step                               0.0/2    [ex0.5] 0.0/2 -- hint: ratio test: error ratios 3.76, 4.05 ~ 4 -> first-order step (symmetrize: kinetic half-steps before AND after H_el, H_m); t=2 ph [0.3s]
+ex1.1   perfect                                        5.0/5    [ex1.1] 5.0/5 PASS H (identity excluded) and H_el^(1) match at L=4,8; [H,Q]=0, <Q^2>=0; E0(L=8) = -2.50901 (convention: +m/2*I per site) [0.0s]
+ex1.1   H_el without the (-1)^k I part of Q_k          3.0/5    [ex1.1] 3.0/5 -- hint: schwinger_hamiltonian(L=4): max coefficient difference 9.00e-02 (identity term excluded) (ZZ terms right, single-Z terms wrong: [0.0s]
+ex1.1   E0 without +m/2 I                              4.5/5    [ex1.1] 4.5/5 -- hint: E0_L8 = -6.50901 drops the +m/2*I per site (16 sites x 0.25 = 4.0); the stated convention gives -2.50901 [0.0s]
+ex1.1   truncated H passed as full                     3.0/5    [ex1.1] 3.0/5 -- hint: schwinger_hamiltonian(L=4): max coefficient difference 7.87e-02 (identity term excluded) (this is the TRUNCATED H_el^(1); the f [0.0s]
+ex1.2   perfect                                        4.0/4    [ex1.2] 4.0/4 PASS electric layer exact at L=4,6 (infidelities 2.2e-16, 4.4e-16); truncation shift 0.0101 confirmed [0.0s]
+ex1.2   perfect (array form)                           4.0/4    [ex1.2] 4.0/4 PASS electric layer exact at L=4,6 (infidelities 2.2e-16, 4.4e-16); truncation shift 0.0101 confirmed [0.0s]
+ex1.2   Rz layer with wrong sign                       0.0/4    [ex1.2] 0.0/4 -- hint: electric_layer(L=4, t=0.171): infidelity 2.20e-03 vs exp(-i t H_el^(1)) (Rz layer: Rz(g^2 t) on 2k, Rz(g^2 t/2) on 2k+1 for k<L [0.0s]
+ex1.3   perfect (live eigsh)                           3.0/3    [ex1.3] 3.0/3 PASS fidelities 0.9961/0.9945/0.9929 and energy gaps confirmed at L=4,6,8 [0.0s]
+ex1.3   fidelity from truncated H                      1.5/3    [ex1.3] 1.5/3 -- hint: vqe_fidelity[4] = 0.98610, expected 0.99610 (overlap with eigsh ground state of the FULL H); vqe_fidelity[6] = 0.98452, expecte [0.0s]
+ex1.4   perfect                                        5.0/5    [ex1.4] 5.0/5 PASS Trotter table, dt^2 scaling, Richardson and dominant error all confirmed [0.0s]
+ex1.4   first-order table (ratio 2)                    0.3/5    [ex1.4] 0.3/5 -- hint: (2,0.5): 0.1000 vs reference 0.0499; (2,0.25): 0.0500 vs reference 0.0124; (4,1): 0.2000 vs reference 0.0948; (4,0.5): 0.1000 v [0.0s]
+ex1.5   perfect (QDC bond-40 file)                     3.0/3    [ex1.5] 3.0/3 PASS bond convergence ok ({8: 0.0561, 20: 0.0029, 32: 0.0013, 40: 0.0007}); X(bond 40) within 0.0008 of the bond-64 reference; wall time [0.0s]
+ex1.5   even-first bond-40 profile                     2.0/3    [ex1.5] 2.0/3 -- hint: max |X_bond40 - X_bond64| = 0.0241 > 0.01 (looks like the odd-first/even-first kinetic ordering was swapped: see ex0.5) [0.0s]
+ex1.5   non-monotone errors                            1.0/3    [ex1.5] 1.0/3 -- hint: mps_err is not monotonically decreasing with the bond dimension: {8: 0.05, 20: 0.03, 40: 0.04}; expected err(bond 8) > 0.02 and [0.0s]
+ex2.1   perfect                                        3.0/3    [ex2.1] 3.0/3 PASS 4 ISA circuits on one 68-qubit path [141, 142, 143]..[36, 41, 42] , 2q-depth 220, 68 layout-consistent observables [0.2s]
+ex2.1   4th circuit on another layout                  1.0/3    [ex2.1] 1.0/3 -- hint: initial/final layouts differ between the 4 circuits (transpile all with initial_layout=<layout of the physics circuit>; a swap- [0.2s]
+ex2.1   logical observables (no apply_layout)          2.0/3    [ex2.1] 2.0/3 -- hint: observable 0 != chi_0.apply_layout(layout) (use SparsePauliOp.apply_layout(qc_isa.layout)) [0.2s]
+ex2.2   perfect                                        5.0/5    [ex2.2] 5.0/5 PASS gate accounting (5758 logical 2q, 4958 CZ) and noise-matched mitigation circuit confirmed [1.4s]
+ex2.2   cancellable junction (no barrier)              3.0/5    [ex2.2] 3.0/5 -- hint: matched mitigation circuit: 4790 CZ vs 4958 in the physics circuit, worst per-bond difference 4 (the transpiler cancels the las [1.5s]
+ex2.2   O1 CZ count                                    4.5/5    [ex2.2] 4.5/5 -- hint: n_cz_physics = 5292 is the optimization_level-1 count; level 3 merges the adjacent kinetic layers of consecutive steps -> 4958 [1.5s]
+ex2.3   perfect (randomized DFS, 4000 restarts)        5.0/5    [ex2.3] 5.0/5 PASS valid path on fake_kingston (1.7 s); cost 1.1341 vs baseline 1.1981 (ratio 0.947) [2.4s]
+ex2.3   returns 67 qubits                              0.0/5    [ex2.3] 0.0/5 -- hint: invalid chain: chain has 67 qubits, expected 68 [1.6s]
+ex2.3   transpiler O3 layout as chain                  2.0/5    [ex2.3] 2.0/5 -- hint: valid path on fake_kingston (0.0 s); cost 1.8634 vs baseline 1.1981 (ratio 1.555) -- a calibration-aware search (randomized DFS [0.0s]
+ex2.3   hard-coded Kingston chain, hidden FakeFez      0.0/5    [ex2.3] 0.0/5 -- hint: invalid chain: edge (69,68) has CZ error 1.000 >= 0.5 (dead edge) [0.1s]
+ex2.3   perfect, hidden FakeFez                        5.0/5    [ex2.3] 5.0/5 PASS valid path on fake_fez (1.7 s); cost 1.0002 vs baseline 0.9969 (ratio 1.003) [2.8s]
+ex2.4   perfect                                        2.0/2    [ex2.4] 2.0/2 PASS flight plan ok (predicted usage 31.5 s) and EstimatorOptions ok [0.0s]
+ex2.4   dict options, resilience 2, too many shots     0.0/2    [ex2.4] 0.0/2 -- hint: predicted usage 362.0 s > 120 s (800000 executions); 800000 executions > 160000; predicted_usage_s = 30.0 but the usage model g [0.0s]
+ex3.1   perfect                                        7.0/7    [ex3.1] 7.0/7 PASS ODR exact on synthetic CP-symmetric data (L=6,8,34), uncertainty within 25 % of MC, bias formula exact [0.6s]
+ex3.1   ODR without post-selection                     4.0/7    [ex3.1] 4.0/7 -- hint: odr_mitigate(L=6): noise-free max deviation from chi_true 6.84e-14, NaN pattern wrong, noisy replica FAIL (sites where BOTH mir [0.6s]
+ex3.1   bias with wrong ratio                          5.0/7    [ex3.1] 5.0/7 -- hint: odr_bias(chi_true, f_phys, f_cal) must equal (1 - chi_true) (1 - f_phys/f_cal) for arrays and scalars (value mismatch) [0.6s]
+ex3.2   perfect                                        5.0/5    [ex3.2] 5.0/5 PASS twirled circuits ISA + equivalent, 96 % dressed CZs, 8 distinct seeds; charge post-selection ok [1.6s]
+ex3.2   y gates (not ISA)                              1.0/5    [ex3.2] 1.0/5 -- hint: seed 0: 'y' on (1,) not supported by fake_kingston.target (express Paulis with x / rz(pi) / sx-based gates or re-run the transl [0.2s]
+ex3.2   no twirl at all + weight L-1                   2.5/5    [ex3.2] 2.5/5 -- hint: 0 % of the CZs carry a non-identity frame (need >= 70 %) and < 8 distinct circuits for 8 seeds (draw a random 2-qubit Pauli per [1.1s]
+ex3.3   perfect (Aer statevector, 4x4000 shots, 104s   8.0/8    [ex3.3] 8.0/8 PASS reduced noise model matches the target on chain [52, 53, 54, 55, 59, 75, 74, 73, 79, 93, 94, 95]; RMSE raw 0.0518 -> ODR 0.0131; fa [0.0s]
+ex3.3   generic noise model, X_mit inconsistent        2.0/8    [ex3.3] 2.0/8 -- hint: noise_model: no cz error on (52,53); no cz error on (53,54); no cz error on (54,55) (+32 more); X_mit is not odr_mitigate(wave) [0.0s]
+ex4.1   ibm_boston canary 2026-07-27 (20000 shots)     3.0/3    [ex4.1] 3.0/3 PASS canary ok: usage 18.0 s, median vacuum-arm retention 0.91, 3 flagged sites, verdict 'fail' [0.0s]
+ex4.2   cached Kingston ODR set (T=8)                 12.1/18   [ex4.2] 12.1/18 -- hint: RMSE_W 0.125 (5.0), contrast 0.437 (3.1), shape 2, quiet 0.021 (2), coverage 0.33, RMSE_68 0.076, usage 96.0 s [0.0s]
+ex4.2   same, marked fallback                         12.1/18   [ex4.2] 12.1/18 -- hint: RMSE_W 0.125 (5.0), contrast 0.437 (3.1), shape 2, quiet 0.021 (2), coverage 0.33, RMSE_68 0.076, usage 96.0 s | fallback dat [0.0s]
+ex4.2   X_mit tampered (+0.1 in the window)            0.0/18   [ex4.2] 0.0/18 -- hint: not scored | JUDGE FLAG: submitted X_mit is not reproduced by the team's odr_mitigate from the submitted evs (1e-6) [0.0s]
+ex4.2   raw twirl+DD set (T=8)                        11.5/18   [ex4.2] 11.5/18 -- hint: RMSE_W 0.134 (4.6), contrast 0.421 (2.9), shape 2, quiet 0.025 (2), coverage 0.22, RMSE_68 0.078, usage 96.0 s [0.0s]
+ex4.3   Kingston twirl_dd -> odr                       3.5/4    [ex4.3] 3.5/4 -- hint: no significant improvement (z = 1.10); half credit for a documented null result [0.0s]
+B1      perfect (structural)                           3.0/3    [B1] 3.0/3 PASS 16/32-step circuits and Richardson profile ok (organizer compares the arrays offline) [3.4s]
+B1      8-step circuit passed as 16                    2.0/3    [B1] 2.0/3 -- hint: 16-step circuit has 5758 2q gates, expected 10974 +-1 % [2.6s]
+B2      perfect ordering                               2.0/2    [B2] 2.0/2 PASS toy ordering confirmed: {'raw_depol': 0.12, 'odr_depol': 0.004, 'raw_amp': 0.1, 'odr_amp': 0.03, 'odr_amp_twirl': 0.006} [0.0s]
+B2      wrong ordering                                 0.0/2    [B2] 0.0/2 -- hint: expected odr_depol < 0.25 raw_depol and odr_amp > odr_depol, got {'raw_depol': 0.12, 'odr_depol': 0.05, 'raw_amp': 0.1, 'odr_amp': [0.0s]
+B3      perfect (rzz barbell)                          1.0/1    [B3] 1.0/1 PASS rzz barbell equals the CX barbell up to phase (6 rzz gates) [0.0s]
+B3      cx barbell                                     0.0/1    [B3] 0.0/1 -- hint: circuit must use rzz gates and no cx/cz (ops: {'cx': 12, 'rz': 6}) [0.0s]
+
+== summary()
+exercise     points   detail
+ex0.1        0.0/2    L=5: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-en
+ex0.2        1.0/2    RXYminus(theta) != exp(+i theta/2 (XY-YX)) (max dev 9.64e-01) (looks like opposite sign)
+ex0.3        0.0/2    L=6: fidelity with the reference vacuum = 0.998809; L=8: fidelity with the reference vacuu
+ex0.4        0.0/2    L=6: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing; L=8: this is the
+ex0.5        0.0/2    ratio test: error ratios 3.76, 4.05 ~ 4 -> first-order step (symmetrize: kinetic half-step
+ex1.1        3.0/5    schwinger_hamiltonian(L=4): max coefficient difference 7.87e-02 (identity term excluded) (
+ex1.2        0.0/4    electric_layer(L=4, t=0.171): infidelity 2.20e-03 vs exp(-i t H_el^(1)) (Rz layer: Rz(g^2 
+ex1.3        1.5/3    vqe_fidelity[4] = 0.98610, expected 0.99610 (overlap with eigsh ground state of the FULL H
+ex1.4        0.3/5    (2,0.5): 0.1000 vs reference 0.0499; (2,0.25): 0.0500 vs reference 0.0124; (4,1): 0.2000 v
+ex1.5        1.0/3    mps_err is not monotonically decreasing with the bond dimension: {8: 0.05, 20: 0.03, 40: 0
+ex2.1        2.0/3    observable 0 != chi_0.apply_layout(layout) (use SparsePauliOp.apply_layout(qc_isa.layout))
+ex2.2        4.5/5    n_cz_physics = 5292 is the optimization_level-1 count; level 3 merges the adjacent kinetic
+ex2.3        5.0/5    valid path on fake_fez (1.7 s); cost 1.0002 vs baseline 0.9969 (ratio 1.003)
+ex2.4        0.0/2    predicted usage 362.0 s > 120 s (800000 executions); 800000 executions > 160000; predicted
+ex3.1        5.0/7    odr_bias(chi_true, f_phys, f_cal) must equal (1 - chi_true) (1 - f_phys/f_cal) for arrays 
+ex3.2        2.5/5    0 % of the CZs carry a non-identity frame (need >= 70 %) and < 8 distinct circuits for 8 s
+ex3.3        2.0/8    noise_model: no cz error on (52,53); no cz error on (53,54); no cz error on (54,55) (+32 m
+ex4.1        3.0/3    canary ok: usage 18.0 s, median vacuum-arm retention 0.91, 3 flagged sites, verdict 'fail'
+ex4.2       11.5/18   RMSE_W 0.134 (4.6), contrast 0.421 (2.9), shape 2, quiet 0.025 (2), coverage 0.22, RMSE_68
+ex4.3        3.5/4    no significant improvement (z = 1.10); half credit for a documented null result
+B1           2.0/3    16-step circuit has 5758 2q gates, expected 10974 +-1 %
+B2           0.0/2    expected odr_depol < 0.25 raw_depol and odr_amp > odr_depol, got {'raw_depol': 0.12, 'odr_
+B3           0.0/1    circuit must use rzz gates and no cx/cz (ops: {'cx': 12, 'rz': 6})
+TOTAL       45.9/100 graded so far out of 90 autograded points; bonus 2.0/6 (ex 5 = 10 points by the judges)
+
+total test time 33s
+ALL GRADER TESTS PASSED
+$P tools/test_grader.py  33.55s user 1.54s system 100% cpu 34.893 total

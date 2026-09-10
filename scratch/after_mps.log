@@ -1,0 +1,12 @@
+MPS done at Mon Sep  7 15:24:12 +08 2026
+refs regenerated:   RMSE_0 = 0.26870241975969134
+  C_ref_measured = 0.5139001495858513
+  bd64_vs_bd128_max = 0.0009123281825058616
+wrote /Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/reference_data/grader_refs.npz (116 keys, 3.6 MB) in 24.9s
+test exit 1
+    ~~~~^^
+  File "/Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/tools/test_grader.py", line 282, in main
+    os.remove(os.path.join(os.environ["FF_SUBMISSION_DIR"], f))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted: '/Users/vishalbajpe/Downloads/QiskitFallFest/schwinger-hadron-challenge/scratch/submission_test/_organizer_rescore'
+ALL DONE

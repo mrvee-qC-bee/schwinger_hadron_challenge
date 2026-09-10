@@ -1,0 +1,282 @@
+[
+ {
+  "severity": "high",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cells 60 (prompt) -> 63, 64, 66 (uses)",
+  "issue": "`pm_pinned` is used by given (non-answer) code in cells 63, 64 and 66 but no prompt ever tells the participant to create a variable of that name; the cell-60 prompt only says 'transpile all four circuits ... then map the observables'. A participant who names their pass manager anything else gets NameError in 2.2.",
+  "evidence": "grep of the participant dump: pm_pinned appears only at lines 1240, 1280, 1292 (all uses, no definition). Solution cell 60 defines it inside the BEGIN/END ANSWER block: `pm_pinned = generate_preset_pass_manager(optimization_level=3, backend=backend, seed_transpiler=42, initial_layout=layout, layout_method=\"trivial\")`.",
+  "fix": "Either move the `pm_pinned = generate_preset_pass_manager(...)` line out of the answer block in cell 60 (mark it `# KEEP`), or add to the cell-60 PROMPT: 'Name the pinned pass manager `pm_pinned` (it is reused in 2.2), the circuit list `circuits_all_isa` and the observables `observables_isa`.'"
+ },
+ {
+  "severity": "high",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 51 (ex 1.4)",
+  "issue": "The plotting code after the answer block uses `X_R` (the Richardson profile), which is not among the names the prompt asks for (trotter_table, richardson_error, dominant_error; X_trotter is only implied by the pre-initialised dict). Participants who compute richardson_error inline hit NameError.",
+  "evidence": "Participant dump line 1024: `ax.plot(range(2 * L8), X_R, \"m:\", ...)`; the PROMPT lines list only trotter_table, richardson_error, dominant_error. Solution defines `X_R = (4 * X_trotter[(4, 0.25)] - X_trotter[(4, 0.5)]) / 3` inside the answer block.",
+  "fix": "Extend the PROMPT: 'fill X_trotter[(t, dt)] (profiles), trotter_table[(t, dt)], X_R (Richardson profile at t = 4 from dt = 0.5 and 0.25), richardson_error and dominant_error', or compute `X_R` in the scaffold after the block from X_trotter."
+ },
+ {
+  "severity": "high",
+  "file": "reference_data/grader_refs.npz (shipped per README.md line 76 / organizer/SPEC.md section A); fallfest_grader.py _refs()",
+  "location": "grade_ex1_1, grade_ex1_2, grade_ex1_3, grade_ex1_4, grade_ex1_5, grade_ex0_3/0_4/0_5 (L=6 halves)",
+  "issue": "Oracle leak: the participant kit ships the exact answers the grader compares against (H_full/H_trunc/Hel Pauli dictionaries at L=4,6,8, E0/E_adapt/vqe_fid, truncation_shift, the six Trotter-table entries, richardson_error, dominant_error, X_ref_t8_bd64, sv_vacuum/sv_wave/sv_physics_t2_L6 statevectors, n2q/CZ counts). A participant who just reads the npz gets full marks on the whole of Part 1 with no physics.",
+  "evidence": "scratch/review_grader_leak.py (reads only shipped files): ex1.1 5/5 (SparsePauliOp built from H_full_labels/coeffs, E0 from the npz), ex1.2 4/4 (electric_layer = UnitaryGate(expm(-i t Hel_trunc from npz)), 4 s), ex1.3 3/3, ex1.4 5/5, ex1.5 3/3 with invented mps_err and X_bond40 = QDC bond-40 file or X_ref_t8_bd64 (mps_seconds={} accepted), ex0.5 2/2 with evolve_circuits = initialize(sv_physics_t2_L6) + identity mitigation, ex0.3/0.4 pass at L=6 via qc.initialize(sv_*_L6) in 2 s (the 16-qubit initialize route is impractically slow: >8 CPU-min, killed; scratch/review_grader_leak_slow.py). That is ~19 autograded points plus half of Part 0 copyable in seconds.",
+  "fix": "Do not ship the answers in clear: (a) store hashes for equality-type checks (sha256 of the sorted, rounded Pauli-coefficient list for ex1.1, rounded E0/table entries/truncation shift for 1.2-1.4) and compare hashes; (b) for statevector checks store phase-invariant random-projection fingerprints (|<phi_k|psi_ref>| for ~16 seeded random phi_k) instead of the full vector, or keep the vectors in an organizer-only file loaded via an environment variable; (c) at minimum move mps_reference/X_ref and the H dictionaries out of the participant kit and state in the README that reading grader_refs.npz zeroes the exercise (viva check)."
+ },
+ {
+  "severity": "high",
+  "file": "fallfest_grader.py",
+  "location": "_pauli_dict (lab = str(p), ~line 181) as used by grade_ex2_1 observable check",
+  "issue": "qiskit's Pauli.__str__ truncates labels longer than 50 qubits to 50 chars + '...', so on 156-qubit observables every Pauli whose non-identity part sits beyond the first 50 characters (physical qubit < 106) collapses to the same dict key as the identity. The ex2.1 observable comparison is therefore vacuous for 53 of the 68 sites on the reference layout, and a correctly built ObservablesArray input is rejected because its term order differs.",
+  "evidence": "scratch/review_grader_ex21_sign.py: str(Pauli('I'*100+'Z'+'I'*55)) has len 53; _pauli_dict of the correct chi_20 (phys qubit 69) is a single-key dict; observables with the Z sign flipped on all 53 sites with phys qubit < 106 -> [ex2.1] 3.0/3 PASS; chi_j replaced by chi_{j+1} on those sites -> 3.0/3 PASS; control (sign flipped on site 0, phys 141) -> 2.0/3 correctly caught. scratch/review_grader_crash_b.py: ObservablesArray(obs) and [ObservablesArray(obs)]*4 -> 2.0/3 'observable 15 != chi_15.apply_layout' although they are correct.",
+  "fix": "Use p.to_label() (or op.paulis.to_labels()) instead of str(p) in _pauli_dict; add a regression test in tools/test_grader.py with a sign-flipped observable on a low physical qubit and with an ObservablesArray input."
+ },
+ {
+  "severity": "medium",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 8 and cell 96",
+  "issue": "`RUN_ON_HARDWARE = False` is defined twice. Cell 8 presents it as the master switch ('every cell that would submit a job is guarded by this flag'); cell 96 silently re-assigns it to False. A team that flips the flag at the top (as README implies) and runs Part 4 will load the fallback (or get FileNotFoundError) instead of submitting.",
+  "evidence": "Cell 8: `RUN_ON_HARDWARE = False   # every cell that would submit a job is guarded by this flag`; cell 96: `RUN_ON_HARDWARE = False          # <- flip to True only after the checklist above`.",
+  "fix": "Keep exactly one switch. Recommended: delete the assignment in cell 96 and replace it with `print(f\"RUN_ON_HARDWARE = {RUN_ON_HARDWARE}\")`, and point the Part-4 checklist to the flag in cell 8; or drop it from cell 8 and tell the README/checklist it lives in cell 96."
+ },
+ {
+  "severity": "medium",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cells 95 (markdown), 96 (load_fallback), 98, 101, 107",
+  "issue": "The participant kit ships no `reference_data/canary_fallback.npz` / `hardware_fallback.npz` (they live in organizer/fallback_data, which is excluded from the kit and only released Day 2). With the default RUN_ON_HARDWARE=False, cell 98 raises FileNotFoundError, so Run-All stops there, contradicting the Part-4 header ('with False they load the organizer's cached dataset ... so that the notebook runs offline end-to-end'). Cell 107 (error-budget table) then also fails: it references `rmse_mit_L6`, `prev_raw`, `prev_mit`, `sigma_hw`, `canary_result` directly although its markdown promises 'missing variables are printed as n/a'.",
+  "evidence": "`ls reference_data` shows no *fallback* files; `ls organizer/fallback_data` shows canary_fallback.npz and hardware_fallback.npz; ORGANIZER_GUIDE \u00a79 says the participant kit is the folder minus organizer/, tools/, scratch/. load_fallback raises FileNotFoundError when neither folder has the file. Cell 107 uses `rmse_mit_L6:.4f`, `prev_raw['RMSE_W']`, `sigma_hw[WINDOW]`, `canary_result['flagged_qubits']` without `_get`.",
+  "fix": "(a) Reword the Part-4 header: 'with False the cells load the organizer fallback dataset if it has been released to you (reference_data/*_fallback.npz); otherwise they stop with a message'. (b) In cells 98/101 catch FileNotFoundError and `raise SystemExit`/print a clear skip message so the Bonus cells remain reachable, or wrap the post-processing in `if canary_evs is not None`. (c) In cell 107 fetch the Part-3.3/4 quantities through `_get(...)` so the promised 'n/a' behaviour holds."
+ },
+ {
+  "severity": "medium",
+  "file": "README.md",
+  "location": "'Submission format' section (and ORGANIZER_GUIDE.md \u00a75)",
+  "issue": "README and guide require `canary_result.npz, hardware_result.npz, improvement.npz, job_info.json` in submission/, but the notebook writes `canary_t0.npz`, `canary_job_id.txt`, `hardware_t8.npz`, `job_id.txt`, `improvement.npz` (job_info is embedded as a JSON string inside the npz files and in the grader's ex4.x npz). Teams following the README will look for files that do not exist; `job_info.json` is never produced.",
+  "evidence": "README: 'canary_result.npz, hardware_result.npz, improvement.npz, job_info.json' and 'job_info.json must list every IBM Quantum job id'; notebook cell 98 `np.savez(\"submission/canary_t0.npz\", ..., job_info=json.dumps(job_info_canary))`, cell 101 `np.savez(\"submission/hardware_t8.npz\", ...)` + `submission/job_id.txt`; cell 118 checklist lists canary_t0.npz, canary_job_id.txt, hardware_t8.npz, job_id.txt. grade_submission.py reads job_info from score.json/ex4.x npz (lines 190, 198), not from job_info.json.",
+  "fix": "Align README and guide \u00a75 with the notebook's checklist (cell 118), and add to cell 101 a `json.dump({\"canary\": job_info_canary, \"main\": job_info}, open(\"submission/job_info.json\", \"w\"), indent=1)` (extended in 4.3) so the README promise of a single job-id manifest is true."
+ },
+ {
+  "severity": "medium",
+  "file": "README.md",
+  "location": "'Submission format' + ORGANIZER_GUIDE.md \u00a75 vs notebook cells 106, 108, 118",
+  "issue": "Report deliverable is inconsistent: README/guide ask for `report.pdf` (\u2264 2 pages) at the zip top level; the notebook asks for `submission/report.md` (\u2264 1 page + up to 4 figures).",
+  "evidence": "README: 'report.pdf  at most 2 pages: error-budget table, ODR bias derivation, improvement rationale'; notebook cell 106: 'Fill the one-page table below in your report (`submission/report.md`, \u2264 1 page + figures)'; cell 118 table lists `error_budget.md, report.md (+ figures)`.",
+  "fix": "Pick one (suggest `submission/report.md` or `.pdf`, \u2264 2 pages including figures) and state it identically in README, guide \u00a75 and cells 106/108/118."
+ },
+ {
+  "severity": "medium",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 108 vs ORGANIZER_GUIDE.md \u00a76",
+  "issue": "The Part-5 judge rubric shown to participants differs from the one judges will use.",
+  "evidence": "Cell 108: 'Scoring sheet (judges): correctness of the error budget 4, ODR derivation 2, use of uncertainties (pulls, z-scores) 2, clarity 2'. Guide \u00a76: 'Error-budget completeness 3 | Magnitudes 3 | Viva 4'.",
+  "fix": "Copy the guide's three-row sheet (3/3/4) into cell 108, or update \u00a76 to the notebook's 4/2/2/2 split; also mention in cell 108 that the viva asks ~8 questions from a bank."
+ },
+ {
+  "severity": "medium",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 62 (ex 2.2 text) vs fallfest_grader.grade_ex2_2 and ORGANIZER_GUIDE \u00a77 level-2 hint",
+  "issue": "The exercise text over-specifies the requirement ('transpiles to the same CZ count and the same per-edge CZ distribution') and explicitly says the barrier variant fails (+66 CZ), while the grader accepts n_cz_mitig \u2265 0.99\u00b7n_cz_physics with per-bond differences \u2264 2 \u2014 which the barrier variant satisfies \u2014 and the grader's own failure hint plus the level-2 hint recommend a barrier. Participants may spend hours chasing exact equality that is not required.",
+  "evidence": "grade_ex2_2: `if nm_ >= 0.99 * np_ and worst <= 2: pts += 2.0` and hint text 'protect the turning point, e.g. with a barrier'. Guide \u00a77: 'a barrier() between the two halves does it'. Notebook cell 62: 'A barrier() ... stops the cancellation but also stops the legitimate merge, so the calibration circuit then has *more* CZ gates ... (+66)' and 'transpiles to the **same** CZ count and the same per-edge CZ distribution'.",
+  "fix": "Reword cell 62 to the graded criterion: '(ii) transpiles to a CZ count within 1 % of the physics circuit with every per-edge count within \u00b12 (a barrier passes; the \u03b5-layer construction below matches exactly and is what you should use on hardware)'."
+ },
+ {
+  "severity": "medium",
+  "file": "tools/nb_part_b.py",
+  "location": "lines 734 and 825 (hardware cells 4.1 and 4.2; same pattern in the 4.3 skeleton, line 1000)",
+  "issue": "`usage_s` is taken from `float(job.usage() or 0.0)` immediately after `job.result()`. In qiskit-ibm-runtime 0.49.0 `BaseRuntimeJob.usage()` returns 0 while the server-side usage record is still `status == 'pending'`, which is routinely the case right after the result arrives. The notebook therefore records `usage_s = 0.0` for real jobs, and `grade_ex4_1` (usage <= 30 s) / `grade_ex4_2` (usage <= 180 s, -5 gate) are then evaluated against 0 \u2014 the QPU-budget gates become vacuous and the submitted job_info is wrong.",
+  "evidence": "site-packages/qiskit_ibm_runtime/base_runtime_job.py:125-150: `if usage.get('status','pending') == 'pending': return 0`; docstring: 'the job usage returned is 0 until the usage calculation is completed'. Confirmed by docs page api/qiskit-ibm-runtime/runtime-job-v2#usage and guides/max-execution-time, which recommends `job.metrics()['usage']['quantum_seconds']` for completed jobs.",
+  "fix": "After `job.result()`, poll `job.metrics()['usage']` until `status != 'pending'` (bounded retry, e.g. 10 x 6 s) and take `quantum_seconds` (or `job.usage()` once non-zero); if still unavailable, fall back to `USAGE_MODEL(executions)` and set `job_info['usage_estimated'] = True` so the grader/organizer can see it was not measured. Apply the same in the 4.3 skeleton comment."
+ },
+ {
+  "severity": "medium",
+  "file": "schwinger_hadron_solution.ipynb",
+  "location": "cell 113 (markdown, Bonus B2) vs cell 114 output",
+  "issue": "The B2 text states 'The witness ordering is unambiguous: amplitude damping untwirled >> amplitude damping twirled > depolarizing', but the notebook's own deterministic density-matrix toy gives the opposite for the last pair: sum<Z> = +0.1593 (AD untwirled), +0.0400 (depolarizing, twirled or not), +0.0377 (AD twirled, 32 frames). The printed `ordering` list is [AD untwirled, depol untwirled, depol twirled, AD twirled], contradicting the sentence participants are told to explain at the viva.",
+  "evidence": "Re-ran the cell-114 pipeline verbatim (optimization_level=0 ISA circuits, p=gamma=0.005, twirl seeds 1000*i+s, AerEstimatorV2 density_matrix precision=0) with the reference odr/twirl functions: raw_depol 0.46616 -> odr 0.07441 (identical to scratch/smoke_part_b.log), witness depol +0.0400, AD untwirled +0.1593, AD twirled +0.0377. sorted(..., key=-abs) yields AD-twirled last.",
+  "fix": "Rewrite the claim: 'AD untwirled (>= +0.16) >> {AD twirled, depolarizing} (both ~ +0.04, i.e. 32 twirls already bring the AD witness down to the residual level set by the site-to-site variation of the factors)'. Keep the graded statement (odr_depol < 0.25 raw_depol, odr_amp > odr_depol), which is confirmed (0.074 vs 0.089)."
+ },
+ {
+  "severity": "medium",
+  "file": "schwinger_hadron_solution.ipynb",
+  "location": "cell 98 (markdown, 4.1 Canary)",
+  "issue": "States 'the two t=0 circuits (wavepacket and vacuum, ~60 CZ each after transpilation)'. The transpiled t=0 circuits have 538 CZ each (542 logical CX from the 2-step SC-ADAPT-VQE layers; O3 removes almost nothing), 9x the stated number.",
+  "evidence": "generate_preset_pass_manager(optimization_level=3, backend=FakeKingston(), initial_layout=<Part-2.1 layout>, seed_transpiler=42).run(prep_wave(34)) -> count_ops()['cz'] = 538; same for prep_vacuum_for_subtraction(34). Cell 27 output also shows 542 logical 2q gates per preparation circuit. The cell-99 code prints 'canary circuits: CZ = [538, 538]', contradicting the text above it.",
+  "fix": "Change '~60 CZ each' to '~540 CZ each (about 8 CZ per qubit, an order of magnitude fewer than the 4958 of the t=8 circuit)'."
+ },
+ {
+  "severity": "medium",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex3_1 uncertainty block (mc_std from a 10^4-sample MC, 'worst < 0.25' over sites with f > 0.2)",
+  "issue": "The 25 % agreement criterion is a seed lottery: a correct Gaussian-resampling implementation identical to the reference except for the RNG stream fails at site 1 (f = 0.344 pooled with f = 0.362, cal_std/((1-chi_exact) f) = 0.49, so 1/f is heavy-tailed: MC std 0.087 vs MAD-std 0.051, samples up to 1.8).",
+  "evidence": "scratch/review_grader_valid.py: default_rng seeds 0..11 -> seeds 2 and 11 score 6/7 and 5/7 ('deviates by up to 115 %'), np.random.RandomState(0) -> 6/7. scratch/review_grader_mcdiag.py: over 30 seeds the worst relative deviation is >= 0.25 for seeds 2, 11, 15, 23 (0.35, 1.15, 0.30, 0.48), always at site 1; two 10^4-sample references differ by up to 5 % themselves.",
+  "fix": "Compare only well-conditioned sites (e.g. require cal_std/((1-chi_exact) f_pooled) < 0.2 in the mask, or lower the synthetic stds to 0.005-0.02), or compare a robust width (MAD or IQR/1.349) instead of nanstd, or widen to 40 % with a 2-pt/1-pt ladder; keep the grader's own seed-averaged reference (mean of several 10^4 runs)."
+ },
+ {
+  "severity": "medium",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex4_3 (z = (rb - ri)/sqrt(sb^2+si^2) ... else float('inf'); 'if z >= 2 and ri < rb: pts += 1')",
+  "issue": "When neither run carries 'sigma' nor '*_std' arrays, score_hardware falls back to sigma = 0, z becomes inf, and the 'real improvement (z >= 2)' point is awarded for any RMSE_W decrease however small, i.e. for a submission that supplied no uncertainties at all.",
+  "evidence": "scratch/review_grader_wrong.py: Kingston twirl_dd -> odr with all std/sigma keys removed and a wrong z_score=5.0 -> [ex4.3] 3.0/4 'RMSE_W 0.134 -> 0.125, z = inf'; the same runs swapped (improvement is worse) still 2.5/4. scratch/review_grader_crash_b.py: identical runs, usage None, z_score None -> 1.5/4 with z = inf.",
+  "fix": "Treat a non-finite z (or sb^2+si^2 == 0) as 'no uncertainty information': award at most the null-result half point, add a flag 'no per-site uncertainties supplied', and require np.isfinite(z) in the improvement condition."
+ },
+ {
+  "severity": "medium",
+  "file": "fallfest_grader.py / organizer/grade_submission.py",
+  "location": "hardware_metric (rmse_w over finite window sites, only the 10-pt term is scaled by 1-0.05*nan_w) and the LEADERBOARD line (rank by RMSE_W)",
+  "issue": "The leaderboard ranking metric RMSE_W ignores NaN sites, and NaNs are under the team's control through the default suppression_threshold of their own odr_mitigate (score_hardware calls odr_mitigate without passing a threshold). A legitimate higher threshold therefore improves the rank; NaN-ing a couple of bad window sites also raises the points.",
+  "evidence": "scratch/review_grader_threshold.py (cached Kingston ODR set, R.odr_mitigate with a different default threshold): thr 0.01 -> RMSE_W 0.125 (12.1 pts); thr 0.25 -> 6 NaN in W, RMSE_W 0.091; thr 0.30 -> 14 NaN, RMSE_W 0.048 (points fall because the dip sites become NaN, but the rank would improve). scratch/review_grader_wrong.py hardware_metric: NaN-ing the 2 worst window sites raises points_raw 12.09 -> 13.31 (+1.2) and RMSE_W 0.125 -> 0.096.",
+  "fix": "Rank by a NaN-penalised RMSE (fill NaN with 0 as schwinger_reference.signal_score does, or with |X_ref_j|) or by points; require >= 16 finite window sites for a leaderboard entry; pass suppression_threshold=0.01 explicitly in score_hardware and grade_ex3_3 so the team's default cannot change the outcome; apply the 5 %/NaN factor to all four point terms."
+ },
+ {
+  "severity": "medium",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex0_5 mitigation-return check (fid_mit > 1-1e-9 -> +0.5) and grade_ex2_2 matched-circuit CZ accounting (+2)",
+  "issue": "The only test on the mitigation circuit in ex0.5 is that it returns to the initial state, so an empty circuit or U U^dagger passes; in ex2.2 the CZ-accounting points are granted when the 'matched' mitigation circuit is simply a copy of the physics circuit (only the separate L=6 fidelity point catches it).",
+  "evidence": "scratch/review_grader_wrong.py: evolve_circuits returning (physics, qc_init.copy()) -> [ex0.5] 2.0/2 PASS; (physics, forward + inverse) -> 2.0/2 PASS; evolve_circuits_matched returning (physics, physics.copy()) -> [ex2.2] 4.0/5 (loses only the L=6 return-fidelity point).",
+  "fix": "In ex0.5 also require the 2q-gate count of qc_mitig to equal that of qc_phys within 1 % (n_steps steps of +-dt) and that the half-time state (first n/2 steps) matches the t/2 physics state; in ex2.2 grant the CZ-accounting points only if the L=6 return fidelity check also passes (or add the same 2q-count test at L=34)."
+ },
+ {
+  "severity": "medium",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex4_1, grade_ex4_2 / score_hardware (no plausibility gate on the submitted arrays or job metadata)",
+  "issue": "Hardware exercises are scored purely from submitted arrays; fabricated data built from shipped files scores full marks with an invented job id and no fallback flag. A rigged odr_mitigate (correct on synthetic data, returns MPS-derived values when it sees the real t=0 references) also scores locally; the organizer re-grade catches the rigged ODR but not fabricated evs.",
+  "evidence": "scratch/review_grader_leak.py: chi = 1 - f(1 - chi_true) with chi_true from mps_reference_L34.npz, f = 0.5 -> [ex4.2] 18.0/18 'RMSE_W 0.000, coverage 1.00'; canary arrays = the exact t=0 QDC files -> [ex4.1] 3.0/3. scratch/review_grader_wrong.py: rigged odr_mitigate -> ex3.1 7/7 and ex4.2 17.9/18 locally; organizer/grade_submission.py on that folder -> ex4.2 0.0 with 'JUDGE FLAG: submitted X_mit is not reproduced' (good). ODR without post-selection but with a consistent X_mit -> 11.9/18 locally with no warning (organizer re-grade would zero it).",
+  "fix": "Add judge flags (not gates): RMSE_W < 0.05 or coverage > 0.9 with sigma at the shot-noise level, stds inconsistent with 1/sqrt(twirls*shots), job_id not matching the 20-character runtime id pattern, retention factors implausibly uniform; state in the README that job ids are verified against the IBM Quantum account at the viva; print a local warning when the team's odr_mitigate deviates from the QDC pooled formula on the hardware arrays so the participant sees the organizer's verdict early."
+ },
+ {
+  "severity": "medium",
+  "file": "organizer/grade_submission.py",
+  "location": "ex2.1 block (line ~130, ff.target_summary(type('B', (), {'name': ..., 'target': None})())) and the same construct in the ex2.3 block",
+  "issue": "For any backend name that does not contain kingston/fez/marrakesh (e.g. 'ibm_boston', 'fake_torino') target_summary falls through to live_target_summary(backend) with target=None and the whole re-grade aborts with AttributeError, so no organizer_score.json / leaderboard line is produced for that team.",
+  "evidence": "scratch/review_team_a (copy of scratch/submission_test with score.json ex2.1/ex2.3 backend set to 'ibm_boston'): python organizer/grade_submission.py scratch/review_team_a --team a -> Traceback ... fallfest_grader.py line 323 in live_target_summary: AttributeError: 'NoneType' object has no attribute 'num_qubits'. A folder with only score.json (scratch/review_team_b) re-grades fine.",
+  "fix": "Wrap the two blocks in try/except and keep the local score with a note ('backend X not frozen: layout/cost not re-checked'), or make target_summary raise a clear ValueError for unknown names and store the frozen summary name in the ex2_1/ex2_3 npz at grading time."
+ },
+ {
+  "severity": "medium",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex0_5 (Statevector(p).evolve(qc) outside _call), grade_ex0_3/_statevector, grade_ex1_3 (float(f)), grade_ex1_5 (secs = {... float(v)}), _norm_table (string branch)",
+  "issue": "Several WRONG answers crash the grader instead of scoring 0 with a hint, contrary to the contract 'never raises on a wrong answer': a trotter_step that ignores L (the anti-hard-coding case) raises inside the ratio test; a prep circuit with measure_all raises QiskitError; list-valued vqe dicts raise; a None wall time raises after the points were already computed; the advertised string-key format 't=2, dt=0.5' crashes because 't=' is replaced before 'dt='.",
+  "evidence": "scratch/review_grader_crash.py: trotter_step returning a 16-qubit circuit at L=6 -> RAISED ValueError: axes don't match array; prep_vacuum with measure_all() -> RAISED QiskitError 'Cannot apply instruction with classical bits: measure'; vqe values as 1-element lists -> RAISED TypeError; mps_seconds {20: None} -> RAISED TypeError; scratch/review_grader_valid.py / review_grader_misc.py: trotter_table keys 't=2, dt=0.5' -> RAISED ValueError: could not convert string to float: 'd0.5' ('(2, 0.5)' and '2,0.5' work).",
+  "fix": "In ex0.5 check qc.num_qubits == n (hint 'does trotter_step ignore L?') before evolving and wrap the Statevector evolutions in _call-style try/except; strip measurements/classical registers (qc.remove_final_measurements) before Statevector in ex0.3/0.4; use np.asarray(v, float).ravel()[0] with size-1 acceptance in ex1.3; float(v) if v is not None else nan in ex1.5; parse string keys with a regex (re.findall(r'[-+]?\\d*\\.?\\d+')) in _norm_table."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 2 (markdown) and cell 41 (`E0_L8 = # float, expected -2.50901`)",
+  "issue": "The autograded number E0_L8 (1 of 5 pts in ex 1.1, checked to 1e-4) is printed in the intro and next to the blank. SPEC \u00a7E states the value only as a convention note, not as something to display. In practice the point is free anyway because the given code in cell 41 already computes and prints `E0[8]`.",
+  "evidence": "grade_ex1_1 lines 819-827 award 1.0 for |E0_L8 \u2212 ref| < 1e-4; cell 41 given loop prints `E0(full) = {E0[LL]:.5f}` for LL=8 and the blank reads `E0_L8 = # float, expected -2.50901`.",
+  "fix": "Either accept (document in the guide that this point is a convention check), or change the blank to `E0_L8 = # float: ground-state energy of the full H at L = 8 (stated convention)` and drop the numeric value from cell 2 (keep 'shifted by +mL')."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cells 16, 40, 69, 104 (scaffold naming)",
+  "issue": "Several scaffolds rely on names the participant must guess: cell 16 calls `qc.to_gate(...)` after the block (circuit must be named `qc`); cell 40 gives `H = 0 * pauli_op(n, {})` for mass/kinetic but not for `electric_hamiltonian_full`/`_truncated` while still ending with `return H.simplify()`, and `schwinger_hamiltonian` has no return outside the block; cell 69 asserts on `best` after the block; cell 104 `compare_runs` must return a dict with keys `baseline, sigma_baseline, improved, sigma_improved` discoverable only from the print line.",
+  "evidence": "Cell 16: `gate = qc.to_gate(label=...)` after `# END ANSWER`; cell 40 `electric_hamiltonian_full` body is only the answer block + `return H.simplify()`; cell 69: `assert best is not None and len(best) == n_qubits`; cell 104 print: `rmse_W_both['baseline']`, `['sigma_baseline']`, `['improved']`, `['sigma_improved']`.",
+  "fix": "Add one line to each prompt: 'build the circuit as `qc = QuantumCircuit(2)`', 'start from `H = 0 * pauli_op(n, {})`' (or add that line as KEEP), 'store the cheapest path in `best`', and for compare_runs: 'return (z_score, z_site, z_contrast, {\"baseline\": .., \"sigma_baseline\": .., \"improved\": .., \"sigma_improved\": ..})'."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 68 (ex 2.3 text)",
+  "issue": "'FakeKingston has 14 dead couplers and one dead readout' counts directed target entries; there are 7 physical couplers (the guide \u00a78 pitfall 9 says 7). Minor but confusing when a team counts undirected edges and gets 7.",
+  "evidence": "Verified on FakeKingston().target: 14 directed cz entries with error \u2265 0.5, 7 undirected edges [(83,96),(96,103),(112,113),(120,121),(130,131),(145,146),(146,147)], dead readout qubit 146.",
+  "fix": "Write 'FakeKingston has 7 dead couplers (14 directed entries in target[\"cz\"]) and one dead readout (qubit 146)'."
+ },
+ {
+  "severity": "low",
+  "file": "README.md",
+  "location": "'What you will do' paragraph",
+  "issue": "README says 'about 5,300 two-qubit gates after transpilation' (the O1 count); the notebook transpiles at optimization level 3 and gets \u2248 4,958 CZ, which is also the graded n_cz_physics value.",
+  "evidence": "README line 15 '(about 5,300 two-qubit gates after transpilation)'; guide \u00a71 '\u2248 4,960 CZ gates'; grade_ex2_2 full credit for the O3 count, half for O1.",
+  "fix": "Change to 'about 5,000 CZ gates after transpilation at optimization level 3 (5,300 at level 1)'."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_participant.ipynb",
+  "location": "cell 37 vs cells 100/101",
+  "issue": "C_ref is computed from the loaded reference in cell 37 (0.514 with the pinned bond-64 file) but hard-coded as 0.515 in the ex-4.2 text and in `leaderboard_preview(..., C_ref=0.515)`; the preview and the grader can differ in the 4th significant digit and teams may ask which is right.",
+  "evidence": "Cell 37: `C_ref = float(np.mean(X_ref[PEAK_SITES]) - np.mean(X_ref[DIP_SITES]))`; cell 101: `def leaderboard_preview(X_hat, sigma, X_ref, W=WINDOW, C_ref=0.515)`; guide \u00a712 item 2 notes 0.514 vs SPEC 0.515.",
+  "fix": "Use the cell-37 `C_ref` variable as the default in `leaderboard_preview` (`C_ref=None -> globals C_ref`) and state in the 4.2 text that the grader reads C_ref from grader_refs.npz."
+ },
+ {
+  "severity": "low",
+  "file": "README.md",
+  "location": "'What you will do' ('Parts 0\u20133 take a typical team most of Day 1') and ORGANIZER_GUIDE \u00a73 schedule",
+  "issue": "Time budget is optimistic. Realistic effort for a 3\u20134 person team (parallelisable): Part 0 2\u20133 h; Part 1 3.5\u20135 h (1.1 transcription of the truncated H formula is the slow item); Part 2 4\u20137 h (2.2 and 2.3 are open-ended); Part 3 6\u20139 h (twirl table + ISA re-synthesis, ODR with mirror pooling + MC, rehearsal); Part 4 2\u20134 h plus queue; Part 5 3\u20134 h; bonus 2\u20134 h. Parts 0\u20133 are \u2248 16\u201324 team-hours, i.e. Day 1 plus Day 2 morning even for strong teams, which matches the guide's schedule (3.3 on Day 2) but not the README sentence.",
+  "evidence": "Counted prompts: 25 graded answer blocks plus 5 grader-called functions with non-trivial specs (select_chain DFS, twirl_circuit, odr_*, reduced_noise_model, evolve_circuits_matched); compute alone is ~15\u201320 min (bond scan, 68-qubit O3 transpiles \u00d73, rehearsal).",
+  "fix": "Change the README sentence to 'Parts 0\u20132 take a typical team Day 1; Part 3 spills into Day 2 morning (the schedule accounts for this)' and keep the guide's timeline; consider making ex 1.5 and 2.3 time-boxed hints explicit ('a greedy search that beats the transpiler layout by a few per cent is enough')."
+ },
+ {
+  "severity": "low",
+  "file": "tools/nb_part_b.py",
+  "location": "lines 447-451 (3.3 markdown, 'Local testing mode is not a noise simulator')",
+  "issue": "The text tells participants that `qiskit_ibm_runtime.EstimatorV2(mode=FakeKingston())` 'silently ignores' the twirling/DD/resilience options and 'runs a plain Aer simulation'. Neither is accurate for runtime 0.49.0: the local service emits `warnings.warn('Options {...} have no effect in local testing mode.')` and a separate `resilience_level` warning at run time (not silent), and the fake backend attaches a NoiseModel built from its calibration snapshot (readout + gate + relaxation errors), so it is a noisy simulation, not a plain one. The conclusion (do not use it to judge mitigation) is right; the stated reasons are wrong and could confuse participants at the viva.",
+  "evidence": "site-packages/qiskit_ibm_runtime/fake_provider/local_service.py:189-190 and 273-274 (warnings); fake_provider/fake_backend.py:110-114 and 320-398 (`_get_noise_model_from_backend_v2`, `self.sim.set_options(noise_model=...)`). Constructing `EstimatorV2(mode=FakeKingston(), options=...)` under `-W error::DeprecationWarning` produced no warning (warnings only fire in `run`).",
+  "fix": "Reword: 'local testing mode warns that twirling/DD/resilience options have no effect and runs an Aer simulation with the fake backend's own calibration noise model (including relaxation), which is slow for these circuits and cannot exercise twirling or ODR options \u2014 use the hand-built reduced Pauli model below instead.'"
+ },
+ {
+  "severity": "low",
+  "file": "fallfest_grader.py",
+  "location": "_qpy_load (line 486) called from grade_ex3_2 (line ~1425); organizer/make_grader_refs.py lines 241-248",
+  "issue": "grade_ex3_2 loads a QPY blob stored in reference_data/grader_refs.npz. The blob is QPY format 17 written by qiskit 2.5.2, which matches the installed 2.5.2 today, but the load is outside `_call`, so any QPY version mismatch (organizer regenerates refs with a newer qiskit whose QPY version exceeds what a participant's `qiskit~=2.5.2` can read) raises from `grade_ex3_2` \u2014 violating the SPEC C contract that graders only raise on wrong input types \u2014 and make_grader_refs.py does not record the qiskit/QPY version used.",
+  "evidence": "Header of `grader_refs.npz['isa_circuit_L6_t2_kingston_O1_qpy']`: magic b'QISKIT', qpy_version 17, qiskit 2.5.2; installed `qiskit.qpy.common.QPY_VERSION == 17`, `QPY_COMPATIBILITY_VERSION == 13`. `_qpy_load` is a bare `qpy.load(...)` with no try/except and no version check.",
+  "fix": "In make_grader_refs.py store `qpy_version` and `qiskit_version` keys; in `_qpy_load` catch `Exception` and return a `_record('ex3.2', 0.0, 'grader reference circuit needs qiskit >= X (QPY vN); pip install -r requirements.txt')` style hint instead of raising. Regenerate refs only with the qiskit minor pinned in requirements.txt."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_solution.ipynb",
+  "location": "cell 68 (markdown, 2.3)",
+  "issue": "'FakeKingston has 14 dead couplers and one dead readout' \u2014 the 14 comes from counting both orientations of backend.target['cz']; physically there are 7 dead couplers (edges with error >= 0.5). The code in cell 69 correctly de-duplicates with tuple(sorted(q)).",
+  "evidence": "FakeKingston().target['cz']: 352 directed entries, 14 with error >= 0.5, collapsing to 7 undirected edges {(83,96),(96,103),(112,113),(120,121),(130,131),(145,146),(146,147)}; target['measure']: one qubit (146) with error >= 0.5.",
+  "fix": "Write '7 dead couplers (14 directed target entries) and one dead readout (qubit 146)'."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_solution.ipynb",
+  "location": "cell 116 (markdown, Bonus B3)",
+  "issue": "'its 14 CX gates and 6 rz rotations' \u2014 challenge_utils.barbell contains 12 CX gates (5 + 4 + 3), not 14.",
+  "evidence": "Counted in challenge_utils.barbell: cx(2,3),cx(1,2),cx(0,1),cx(1,2),cx(2,3) | cx(2,3),cx(1,2),cx(2,3),cx(0,1) | cx(2,3),cx(1,2),cx(2,3) = 12; the grader's own B3 failure message reports ops {'cx': 12, 'rz': 6}.",
+  "fix": "Replace '14 CX gates' with '12 CX gates'."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_solution.ipynb",
+  "location": "cell 80 (markdown 3.1) vs cell 113 (markdown B2)",
+  "issue": "Cell 80 says amplitude damping gives 'a state-independent offset' b in <Z>_meas = f <Z>_true + b; cell 113 says 'amplitude damping is mitigated worse (its offset is state dependent)'. Both are defensible in their own context (single channel vs. damping interleaved with gates, whose non-unital part is propagated through later unitaries), but as written the two sections contradict each other.",
+  "evidence": "Text of cells 80 and 113 as dumped; single-qubit map E^dagger(Z) = (1-gamma) Z + gamma I verified (offset gamma is state independent for one channel), while in the B2 toy the effective offset after 166 CZ is what makes ODR fail (0.089 vs 0.074).",
+  "fix": "In cell 80 add 'for a single damping event; interleaved with gates the propagated offset becomes state dependent, which is what breaks the transfer of f from the calibration to the physics state', and drop 'its offset is state dependent' from cell 113 or refer back to that sentence."
+ },
+ {
+  "severity": "low",
+  "file": "schwinger_hadron_solution.ipynb",
+  "location": "cell 102, function leaderboard_preview and the print line after it",
+  "issue": "The preview differs from the authoritative grader in two ways: (a) it multiplies the whole score by (1 - 0.05 n_NaN) whereas fallfest_grader.hardware_metric applies the NaN penalty to the RMSE term only; (b) the printed suffix '(x0.75 fallback cap)' follows an uncapped value (12.1) and suggests a multiplicative cap, whereas the grader caps with min(pts, 0.75*18 = 13.5). No numeric effect on the shipped fallback data (0 NaN in W, 12.1 < 13.5), but the preview is documented as 'the SPEC formula'.",
+  "evidence": "fallfest_grader.py hardware_metric: p_rmse *= max(0, 1 - 0.05*nan_w) only; score_hardware: pts = min(pts, 0.75*MAX_POINTS['ex4.2']). Notebook: pts *= max(0.0, 1 - 0.05*n_nan) on the total; print(f'... {points_preview:.1f}/18{' (x0.75 fallback cap)' ...}').",
+  "fix": "Apply the NaN factor to the 10-point RMSE term only, and print min(pts, 13.5) with the label '(fallback cap 13.5)' when job_info['fallback'] is True."
+ },
+ {
+  "severity": "low",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex1_1 (E0_L8 type check), grade_ex1_4 (richardson_error), grade_ex2_2 (int-only counts), grade_ex1_5 (X_bond40 shape), grade_ex4_1/score_hardware (usage_s isinstance(int, float)), grade_ex2_4 (float(predicted_sigma_X))",
+  "issue": "Strict type checks reject plausible numpy-typed inputs: E0_L8 as the (1,) array eigsh returns or a 0-d array, richardson_error as a 0-d array, n_cz_physics as a float, X_bond40 of shape (1,68), predicted_sigma_X given per site (loses 1 pt with 'wrong types'), usage_s as np.int64 (ex4.1 loses the metadata point) or a numeric string (ex4.2 -2 'usage_s missing').",
+  "evidence": "scratch/review_grader_crash.py / review_grader_crash_b.py / review_grader_wrong.py: E0_L8 = np.array([E0]) -> TypeError 'E0_L8 must be a float'; 0-d array -> same; richardson 0-d array -> TypeError; n_cz_physics float -> TypeError; X_bond40 (1,68) -> TypeError; predicted_sigma_X array -> 1.0/2; usage_s np.int64(18) -> [ex4.1] 2.0/3; usage_s '96' -> 10.1/18 with '-2 usage missing'.",
+  "fix": "Coerce with np.asarray(x, float).ravel() and accept size-1 arrays; accept numbers.Real / np.integer / np.floating (and int(float) counts) in the type checks; accept a per-site predicted_sigma_X by taking its median."
+ },
+ {
+  "severity": "low",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex2_3 / baseline_chain, target_summary (exported in __all__), and the O3 transpiler layout",
+  "issue": "The shipped grader contains the reference search: select_chain = lambda b, n_qubits=68: ff.baseline_chain(ff.target_summary(b), n_qubits)[1] scores 5/5 on Kingston and on the hidden FakeFez (ratio 1.000), and returning the transpiler's O3 layout without any search also scores 5/5 (ratio 1.011, as the integration addendum notes). Only the viva / a team_functions.py hidden re-run can tell.",
+  "evidence": "scratch/review_grader_leak.py: 'select_chain = ff.baseline_chain(...)' -> [ex2.3] 5.0/5 cost 13.2172 vs baseline 13.2172 (Kingston) and 22.5185 vs 22.5185 (FakeFez); scratch/review_grader_misc.py: O3 layout -> 5.0/5 (ratio 1.011).",
+  "fix": "Tighten the top tier (baseline = best of 4 seeds x 4000 restarts, full marks at ratio <= 1.02) so the 1-second grader baseline is not itself a full-mark answer, add a flag when the returned chain equals the frozen O3 layout or the grader baseline chain, and say in the README that calling grader internals zeroes the exercise."
+ },
+ {
+  "severity": "low",
+  "file": "fallfest_grader.py",
+  "location": "grade_ex1_5 (X_bond40 within 0.01 of bond-64; mps_seconds unchecked)",
+  "issue": "A bit-identical copy of the shipped QDC bond-40 file (or of X_ref_t8_bd64) passes the bond-40 check, any three decreasing numbers with err(8) > 0.02 > err(20) pass the convergence checks, and mps_seconds is never inspected, so the exercise can be completed without running an MPS simulation.",
+  "evidence": "scratch/review_grader_leak.py: mps_err={8:0.05,20:0.01,40:0.001}, mps_seconds={}, X_bond40 = QDC file -> [ex1.5] 3.0/3 'wall times {}'; same with X_ref_t8_bd64 -> 3.0/3 (max diff 0.0000).",
+  "fix": "Flag max|X_bond40 - X_QDC40| < 1e-9 or max|X_bond40 - X_ref64| < 1e-9 as a copy (own Aer MPS runs differ by ~1e-5), require mps_seconds to have positive entries for every bond in mps_err and to increase with the bond dimension, and store X_by_bond for all bonds in the npz for the organizer re-grade."
+ }
+]

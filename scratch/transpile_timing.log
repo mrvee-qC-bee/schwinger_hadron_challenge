@@ -1,0 +1,16 @@
+t=4.0 logical 2q physics=3150 mitig=3150
+  O1: 0.2s cz=2942 depth2q=130 layout[:6]=[2, 3, 4, 5, 6, 7] final==init True
+  O1 mitig w/ layout: 0.1s cz=2742
+  O1 mitig protected: 0.0s cz=3010
+  O3: 0.5s cz=2942 depth2q=130 layout[:6]=[141, 142, 143, 136, 123, 124] final==init True
+  O3 mitig w/ layout: 0.3s cz=2742
+  O3 mitig protected: 0.3s cz=3010
+t=8.0 logical 2q physics=5758 mitig=5758
+  O1: 0.1s cz=5278 depth2q=238 layout[:6]=[2, 3, 4, 5, 6, 7] final==init True
+  O1 mitig w/ layout: 0.2s cz=5078
+  O1 mitig protected: 0.1s cz=5346
+  O3: 0.7s cz=5278 depth2q=238 layout[:6]=[141, 142, 143, 136, 123, 124] final==init True
+  O3 mitig w/ layout: 0.5s cz=5078
+  O3 mitig protected: 0.5s cz=5346
+n_steps=16: 2q=10974
+n_steps=32: 2q=21406

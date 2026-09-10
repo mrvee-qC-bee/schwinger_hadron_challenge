@@ -1,0 +1,350 @@
+{
+ "ex0.1": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "L=5: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings); L=7: chi_0 differs from (-1)^j Z_j + I (max coeff diff 2.00e+00; remember Qiskit little-endian strings)",
+  "time": "2026-09-11 01:06:48"
+ },
+ "ex0.2": {
+  "points": 1.0,
+  "max": 2,
+  "detail": "RXYminus(theta) != exp(+i theta/2 (XY-YX)) (max dev 9.64e-01) (looks like opposite sign)",
+  "time": "2026-09-11 01:06:48",
+  "theta": 0.5030183338947168
+ },
+ "ex0.3": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "L=6: TypeError: Parameter expression with unbound parameters {Standalone { name: \"t\", uuid: 0b01c611-f94a-40d9-ae1a-5e6d23b335bf }} is not numeric. -- the circuit still has unbound Parameters: call assign_parameters before returning it; L=8: TypeError: Parameter expression with unbound parameters {Standalone { name: \"t\", uuid: 4334ee13-8925-4338-b4c7-11fb707a284c }} is not numeric. -- the circuit still has unbound Parameters: call assign_parameters before returning it",
+  "time": "2026-09-11 01:07:50",
+  "fidelities": {}
+ },
+ "ex0.4": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "L=6: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing; L=8: this is the vacuum -- the O_11 / O_22 wavepacket layers are missing",
+  "time": "2026-09-11 01:06:50",
+  "fidelities": {
+   "6": 0.00022634095784439698,
+   "8": 0.00022633812058598252
+  }
+ },
+ "ex0.5": {
+  "points": 1.0,
+  "max": 2,
+  "detail": "trotter_step at L=6: circuit has 16 qubits, expected 12 (does the function ignore its L argument?)",
+  "time": "2026-09-11 01:07:50",
+  "errors": null,
+  "ratios": null,
+  "fid_physics": 1.0,
+  "fid_mitig": 0.9999999999999994
+ },
+ "ex1.1": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "H (identity excluded) and H_el^(1) match at L=4,8; [H,Q]=0, <Q^2>=0; E0(L=8) = -2.50901 (convention: +m/2*I per site)",
+  "time": "2026-09-11 01:07:50",
+  "E0_L8": -2.509005331524553,
+  "Ls": [
+   4,
+   8
+  ]
+ },
+ "ex1.2": {
+  "points": 4.0,
+  "max": 4,
+  "detail": "electric layer exact at L=4,6 (infidelities 2.2e-16, 5.6e-16); truncation shift 0.0101 confirmed",
+  "time": "2026-09-11 01:07:50",
+  "infidelities": {
+   "4": 2.220446049250313e-16,
+   "6": 5.551115123125783e-16
+  }
+ },
+ "ex1.3": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "fidelities 0.9961/0.9945/0.9929 and energy gaps confirmed at L=4,6,8",
+  "time": "2026-09-11 01:07:50"
+ },
+ "ex1.4": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "Trotter table, dt^2 scaling, Richardson and dominant error all confirmed",
+  "time": "2026-09-11 01:07:50",
+  "ratios": {
+   "2.0": [
+    4.042715634685151,
+    4.022246525290671
+   ],
+   "4.0": [
+    3.940183328544822,
+    3.9841330720820656
+   ]
+  },
+  "dominant_error": "trotter"
+ },
+ "ex1.5": {
+  "points": 3.0,
+  "max": 3,
+  "detail": "bond convergence ok ({8: 0.05, 20: 0.01, 40: 0.001}); X(bond 40) within 0.0000 of the bond-64 reference; wall times {'20': nan} | FLAG: no positive wall times reported -- did the MPS scan actually run?; FLAG: X_bond40 is bit-identical to a shipped reference file -- an own Aer MPS run differs by ~1e-5",
+  "time": "2026-09-11 01:07:50",
+  "flags": [
+   "no positive wall times reported -- did the MPS scan actually run?",
+   "X_bond40 is bit-identical to a shipped reference file -- an own Aer MPS run differs by ~1e-5"
+  ]
+ },
+ "ex2.1": {
+  "points": 2.0,
+  "max": 3,
+  "detail": "observable 20 != chi_20.apply_layout(layout) (use SparsePauliOp.apply_layout(qc_isa.layout))",
+  "time": "2026-09-11 01:07:49",
+  "backend": "fake_kingston"
+ },
+ "ex2.2": {
+  "points": 4.5,
+  "max": 5,
+  "detail": "n_cz_physics = 5292 is the optimization_level-1 count; level 3 merges the adjacent kinetic layers of consecutive steps -> 4958",
+  "time": "2026-09-11 01:07:06"
+ },
+ "ex2.3": {
+  "points": 5.0,
+  "max": 5,
+  "detail": "valid path on frozen:fez (4.9 s); cost 22.8427 vs baseline 21.9864 (ratio 1.039)",
+  "time": "2026-09-11 01:07:34",
+  "backend": "fake_fez",
+  "seconds": 4.906708002090454,
+  "ratio": 1.0389475704870288,
+  "flags": []
+ },
+ "ex2.4": {
+  "points": 2.0,
+  "max": 2,
+  "detail": "flight plan ok (predicted usage 31.5 s) and EstimatorOptions ok",
+  "time": "2026-09-11 01:07:53",
+  "usage_model_s": 31.4912
+ },
+ "ex3.1": {
+  "points": 5.0,
+  "max": 7,
+  "detail": "odr_bias(chi_true, f_phys, f_cal) must equal (1 - chi_true) (1 - f_phys/f_cal) for arrays and scalars (odr_bias must be a numeric array of 12 values (str given))",
+  "time": "2026-09-11 01:07:53"
+ },
+ "ex3.2": {
+  "points": 0.0,
+  "max": 5,
+  "detail": "mitigation_options must return an EstimatorOptions or a dict, got NoneType (EstimatorOptions base)",
+  "time": "2026-09-11 01:07:39"
+ },
+ "ex3.3": {
+  "points": 4.0,
+  "max": 8,
+  "detail": "odr_mitigate(wave) has shape (68,), expected (12,)",
+  "time": "2026-09-11 01:07:53",
+  "rmse_raw": 0.051765857530289276,
+  "rmse_mit": 0.013124558150415919
+ },
+ "ex4.1": {
+  "points": 0.0,
+  "max": 3,
+  "detail": "no hardware data: no job returned and no organizer fallback dataset loaded -- run the job (RUN_ON_HARDWARE = True) or ask the organizers for the Day-2 fallback dataset",
+  "time": "2026-09-11 01:07:53",
+  "job_info": {
+   "job_id": "none",
+   "backend": "ibm_kingston",
+   "usage_s": 0.0,
+   "num_randomizations": 0,
+   "shots_per_randomization": 0,
+   "fallback": true,
+   "no_data": true,
+   "layout": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67
+   ]
+  },
+  "fallback": false,
+  "no_data": true
+ },
+ "ex4.2": {
+  "points": 0.0,
+  "max": 18,
+  "detail": "no hardware data: no job returned and no organizer fallback dataset loaded -- run the job (RUN_ON_HARDWARE = True) or ask the organizers for the Day-2 fallback dataset",
+  "time": "2026-09-11 01:07:53",
+  "job_info": {
+   "job_id": "none",
+   "backend": "ibm_kingston",
+   "usage_s": 0.0,
+   "num_randomizations": 0,
+   "shots_per_randomization": 0,
+   "fallback": true,
+   "no_data": true,
+   "layout": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67
+   ]
+  },
+  "fallback": false,
+  "no_data": true,
+  "flags": []
+ },
+ "ex4.3": {
+  "points": 2.5,
+  "max": 4,
+  "detail": "RMSE_W 0.134 -> 0.125, z = nan, usage 40.0 s | neither run carries per-site uncertainties ('sigma' or the four *_std arrays), so no z-score can be formed -- an RMSE_W difference without an uncertainty is not evidence; z_score = 5.0 but the grader gets z = (RMSE_base - RMSE_imp)/sqrt(s_b^2 + s_i^2) = nan (RMSE_W 0.134 +- 0.000 -> 0.125 +- 0.000); half credit for a documented run without uncertainties (supply sigma or the *_std arrays for the full point)",
+  "time": "2026-09-11 01:07:50",
+  "z_grader": NaN,
+  "rmse_baseline": 0.13449938135456374,
+  "rmse_improved": 0.12525916825396646,
+  "usage_s": 40.0,
+  "fallback": false
+ },
+ "B1": {
+  "points": 2.0,
+  "max": 3,
+  "detail": "16-step circuit has 5758 2q gates, expected 10974 +-1 %",
+  "time": "2026-09-11 01:07:49"
+ },
+ "B2": {
+  "points": 0.0,
+  "max": 2,
+  "detail": "toy_results values must be single finite numbers: each entry must be a single finite number",
+  "time": "2026-09-11 01:07:53"
+ },
+ "B3": {
+  "points": 0.0,
+  "max": 1,
+  "detail": "circuit must use rzz gates and no cx/cz (ops: {'cx': 12, 'rz': 6})",
+  "time": "2026-09-11 01:07:49"
+ }
+}

@@ -1,0 +1,3 @@
+hardware_fallback.npz: evs (4, 68), stds (4, 68), layout (68,), job d9hr3p50k0jc738il8dg on ibm_kingston, 100 x 1000 shots, usage ~182 s (estimated)
+canary_fallback.npz: evs (2, 68), job d9jm0doii2cc73ef1p60 on ibm_boston, 20000 shots, usage ~20 s (estimated), organizer verdict 'fail'
+$P organizer/make_hardware_fallback.py  0.06s user 0.03s system 85% cpu 0.106 total

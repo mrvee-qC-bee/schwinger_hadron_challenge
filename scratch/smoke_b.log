@@ -1,0 +1,154 @@
+<cell 5>:41: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<cell 16>:36: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<cell 21>:80: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<cell 24>:120: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<cell 27>:96: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+<cell 33>:63: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+using the REAL fallfest_grader.py
+participant view: 27 code cells, 0 leaked solution lines
+no solution tokens in the participant view
+namespace ready in 3.3 s: CZ = 4958, layout[:4] = [141, 142, 143, 136]
+--- cell 1 OK in 0.0 s :: # Part 3 set-up: imports and three small helpers used in Parts 3-5 (no
+--- cell 3 OK in 0.0 s :: # PROMPT: implement ODR yourself.
+(1) noise-free recovery: max |error| = 4.4e-16, NaN sites = [5, 62]
+(2) bias for f_phys/f_cal = 0.9: max |delta chi| = 0.079 (largest where 1 - chi is largest), formula exact to 4.0e-16
+(3) MC sigma / empirical sigma: median 1.01, range [0.88, 1.09]; sigma grows like 1/f: corr(sigma, 1/f) = 0.65
+--- cell 5 OK in 0.2 s :: # Self-test of your ODR implementation on synthetic data (no prompts; 
+odr_mitigate == challenge_utils.postselection_and_mitigation on 20 random inputs: OK
+--- cell 6 OK in 0.0 s :: # organizer sanity check: the hand-written ODR reproduces the QDC help
+[ex3.1] 7.0/7 PASS ODR exact on synthetic CP-symmetric data (L=6,8,34), uncertainty within 25 % of MC, bias formula exact
+--- cell 7 OK in 1.5 s :: # grade 3.1 (synthetic data, fixed seeds)
+--- cell 9 OK in 0.0 s :: # PROMPT:
+L=4 physics circuit: {'rz': 569, 'sx': 334, 'cz': 156, 'x': 4} -> twirled: {'rz': 891, 'sx': 334, 'x': 296, 'cz': 156} | unitary-equivalent: True
+68-qubit t=8 ISA circuit: {'cz': 4958, 'sx': 10247, 'x': 217, 'rz': 9550} -> twirled: {'cz': 4958, 'sx': 10247, 'x': 10007, 'rz': 19407} | layout preserved: True
+depolarizing      : witness sum<Z> = -0.010 (untwirled) -0.039 (twirled) | Q=0 fraction kept = 0.349 / 0.323
+amplitude damping : witness sum<Z> = +0.426 (untwirled) -0.021 (twirled) | Q=0 fraction kept = 0.339 / 0.352
+ideal (noise-free) witness: +0.000
+--- cell 11 OK in 4.4 s :: # Twirl check + charge-witness toy at L = 4 (no prompts, < 30 s)
+[ex3.2] 5.0/5 PASS twirled circuits ISA + equivalent, 96 % dressed CZs, 8 distinct seeds; charge post-selection ok
+--- cell 12 OK in 1.6 s :: # grade 3.2 (unitary equivalence + ISA check of twirl_circuit on a hid
+12-qubit sub-chain: [50, 51, 58, 71, 72, 73, 74, 75, 59, 55, 54, 53]
+CZ errors on its edges: ['0.0013', '0.0019', '0.0018', '0.0016', '0.0016', '0.0012', '0.0012', '0.0014', '0.0011', '0.0019', '0.0010']
+readout errors: ['0.002', '0.024', '0.012', '0.006', '0.053', '0.041', '0.008', '0.015', '0.006', '0.012', '0.037', '0.008']
+NoiseModel:
+  Basis gates: ['cz', 'rz', 'sx', 'x']
+  Instructions with noise: ['measure', 'sx', 'cz', 'x']
+  Qubits with noise: [71, 72, 73, 74, 75, 50, 51, 53, 54, 55, 58, 59]
+  Specific qubit errors: [('cz', (50, 51)), ('cz', (51, 50)), ('cz', (51, 58)), ('cz', (58, 51)), ('cz', (58, 71)), ('cz', (71, 58)), ('cz', (71, 72)), ('cz', (72, 71)), ('cz', (72, 73)), ('cz', (73, 72)), ('cz', (73, 74)), ('cz', (74, 73)), ('cz', (74, 75)), ('cz', (75, 74)), ('cz', (75, 59)), ('cz', (59, 75)), ('cz', (59, 55)), ('cz', (55, 59)), ('cz', (55, 54)), ('cz', (54, 55)), ('cz', (54, 53)), ('cz', (53, 54)), ('sx', (50,)), ('sx', (51,)), ('sx', (58,)), ('sx', (71,)), ('sx', (72,)), ('sx', (73,)), ('sx', (74,)), ('sx', (75,)), ('sx', (59,)), ('sx', (55,)), ('sx', (54,)), ('sx', (53,)), ('x', (50,)), ('x', (51,)), ('x', (58,)), ('x', (71,)), ('x', (72,)), ('x', (73,)), ('x', (74,)), ('x', (75,)), ('x', (59,)), ('x', (55,)), ('x', (54,)), ('x', (53,)), ('measure', (50,)), ('measure', (51,)), ('measure', (58,)), ('measure', (71,)), ('measure', (72,)), ('measure', (73,)), ('measure', (74,)), ('measure', (75,)), ('measure', (59,)), ('measure', (55,)), ('measure', (54,)), ('measure', (53,))]
+--- cell 14 OK in 0.0 s :: # PROMPT: reduced_noise_model(backend, chain) -> qiskit_aer.noise.Nois
+rehearsal run: 20.1 s
+CZ counts: [398, 370, 398, 370] | 2q depths: [120, 115, 120, 115]
+--- cell 15 OK in 20.1 s :: # PROMPT: build the four L=6, t=4 circuits (wave / wave_mitig / vacuum
+RMSE vs exact: raw 0.0625 (CP-averaged 0.0609) -> ODR 0.0134  (shot-noise floor ~ 0.0247); calibration factors 0.80-0.91; pulls: mean -0.39, std 0.39, max |pull| 1.20
+--- cell 16 OK in 0.3 s :: # PROMPT: post-process the rehearsal with YOUR functions:
+[ex3.3] 8.0/8 PASS reduced noise model matches the target on chain [50, 51, 58, 71, 72, 73, 74, 75, 59, 55, 54, 53]; RMSE raw 0.0625 -> ODR 0.0134; factors [0.91, 0.81, 0.82, 0.8, 0.83, 0.82, 0.9, 0.87, 0.88, 0.86, 0.83, 0.89]
+--- cell 17 OK in 0.0 s :: # grade 3.3 (noise model vs the frozen target summary, ODR consistency
+RUN_ON_HARDWARE = False  (set in the setup cell at the top of the notebook)
+RUN_ON_HARDWARE = False; hardware target would be ibm_kingston; reference = MPS bond 64; X_ref peaks [0.509, 0.507, 0.507, 0.509], dip [-0.006, -0.006]
+--- cell 19 OK in 0.0 s :: # Master switch, fallback loader and small helpers (no prompts)
+canary circuits: CZ = [538, 538] | predicted usage ~ 3.8 s
+loaded fallback dataset organizer/fallback_data/canary_fallback.npz: job d9jm0doii2cc73ef1p60 on ibm_boston (ibm_boston 2026-07-27 t=0 canary (20000 shots, no twirling); evs are chi_j for [...)
+canary on ibm_boston (job d9jm0doii2cc73ef1p60, usage 20 s est.): median retention wave 0.91 / vacuum 0.91, contrast retention 0.17, flagged sites [7, 33, 50] -> qubits [154, 64, 27] (wave arm: [7, 34, 50])  =>  FAIL: re-select the chain (exclude the flagged qubits) before the main run
+--- cell 21 OK in 0.2 s :: # PROMPT: canary. Transpile qc_wave_init / qc_vacuum_init onto layout_
+[ex4.1] 2.2/3 -- hint: fallback dataset: capped at 75 %
+--- cell 22 OK in 0.0 s :: # grade 4.1
+flight plan: {'canary': {'pubs': 2, 'twirls': 16, 'shots': 128, 'usage_s': 3.8}, 'main': {'pubs': 4, 'twirls': 64, 'shots': 256, 'usage_s': 31.5}, 'cap_s': 180} | predicted usage ~ 31.5 s
+loaded fallback dataset organizer/fallback_data/hardware_fallback.npz: job d9hr3p50k0jc738il8dg on ibm_kingston (ibm_kingston 2026-07-25, strategy 'odr' (gate+measure twirling, DD XY4, resilien...)
+job d9hr3p50k0jc738il8dg on ibm_kingston, usage 182 s (estimated), fallback=True
+raw : RMSE_W 0.229  contrast 0.068  quiet 0.003  -> preview 2.8/18
+ODR : RMSE_W 0.125  contrast 0.437  quiet 0.021  coverage 0.33  NaN in W 0  -> preview 12.1/18 (fallback cap 13.5); factors < 0.9 on 18/18 window sites (gate: >= 10)
+--- cell 24 OK in 0.1 s :: # PROMPT: main run. If RUN_ON_HARDWARE: submit the 4 PUBs with the Par
+[ex4.2] 12.1/18 -- hint: RMSE_W 0.125 (5.0), contrast 0.437 (3.1), shape 2, quiet 0.021 (2), coverage 0.33, RMSE_68 0.076, usage 182.0 s | usage 182 s is the organizer's estimate for the fallback job (gate waived); fallback dataset (organizer-released): capped at 75 %
+--- cell 25 OK in 0.0 s :: # grade 4.2 (recomputes X_hat from evs with YOUR odr_mitigate, then ap
+RMSE_W: baseline 0.134 +- 0.006 -> improved 0.052 +- 0.005: z_score = +11.29; contrast z = +1.14; |z_site| in W: median 2.78, max 5.97
+null comparison (two jobs, identical options): z_score = +1.09, |z_site| in W median 0.97, max 1.61, contrast z = +0.43  <- what 'no change' looks like
+submission/job_info.json: ['canary', 'main', 'improvement']
+--- cell 27 OK in 0.1 s :: # PROMPT: improvement run. Fill `improvement` (see the table above). I
+[ex4.3] 3.0/4 -- hint: RMSE_W 0.134 -> 0.052, z = 11.29, usage 182.0 s | usage_s = 182.0 is the organizer's estimate for cached jobs (gate waived on fallback data); fallback / illustration on organizer data: capped at 75 %
+--- cell 28 OK in 0.0 s :: # grade 4.3
+<IPython.core.display.Markdown object>
+--- cell 30 OK in 0.3 s :: # Error-budget table from the notebook variables (no prompts; extend i
+dt -> steps / 2q gates: {1.0: (8, 5758), 0.5: (16, 10974), 0.25: (32, 21406)}
+loaded organizer bond-32 profiles for dt = [1.0, 0.5, 0.25] (all at the same bond dimension, so differences are pure Trotter error)
+Trotter budget at L=34, t=8:  max |X(dt=1) - X_Richardson| in W = 0.1093 | max |X(0.5) - X(0.25)| in W = 0.0192 | max |X(1) - X(0.5)| in W = 0.0837
+--- cell 33 OK in 5.2 s :: # PROMPT: build the dt = 0.5 and 0.25 physics circuits with evolve_cir
+[B1] 3.0/3 PASS 16/32-step circuits and Richardson profile ok (organizer compares the arrays offline)
+--- cell 34 OK in 3.2 s :: _nan68 = np.full(2 * L, np.nan)
+gate-matched circuits, CZ counts: [166, 166, 166, 166]
+(32 s)  case (noise, twirled): max|X - X_exact| raw -> ODR  (RMSE ODR) | witness sum<Z>
+   ('depolarizing', False)           : 0.4662 -> 0.0744  (0.0450) | +0.0400
+   ('depolarizing', True)            : 0.4662 -> 0.0744  (0.0450) | +0.0400
+   ('amplitude_damping', False)      : 0.5055 -> 0.0887  (0.0531) | +0.1593
+   ('amplitude_damping', True)       : 0.4787 -> 0.0878  (0.0521) | +0.0377
+witness ordering (largest |sum<Z>| first): [('amplitude_damping', False), ('depolarizing', False), ('depolarizing', True), ('amplitude_damping', True)]
+toy_results: {'raw_depol': 0.4662, 'odr_depol': 0.0744, 'raw_amp': 0.5055, 'odr_amp': 0.0887, 'odr_amp_twirl': 0.0878, 'odr_depol_twirl': 0.0744}
+--- cell 36 OK in 32.3 s :: # PROMPT: fill toy_results = {"raw_depol", "odr_depol", "raw_amp", "od
+[B2] 2.0/2 PASS toy ordering confirmed: {'raw_depol': 0.4661632728172159, 'odr_depol': 0.07444117492836444, 'raw_amp': 0.5055021552766668, 'odr_amp': 0.0886710143565832, 'odr_amp_twirl': 0.08781703851736755}
+--- cell 37 OK in 0.0 s :: ff.grade_bonus_B2(toy_results)
+barbell_rzz == challenge_utils.barbell (up to a global phase) on 5 random angle sets: OK
+CX barbell -> cz basis                : 2q gates {'cz': 12}, 2q depth 11
+rzz barbell -> cz basis               : 2q gates {'cz': 17}, 2q depth 14
+rzz barbell -> cz+rzz basis (line)    : 2q gates {'rzz': 10, 'cz': 3}, 2q depth 10
+Note: (0,2), (1,3), (0,3) are not chain neighbours, so the transpiler routes them with swaps (cz) or re-synthesises the diagonal; on hardware use use_fractional_gates=True and keep every rzz angle in (0, pi/2] (FoldRzzAngle / WrapAngles).
+--- cell 39 OK in 0.0 s :: # PROMPT: barbell_rzz(a1, a2, a3, a4, a5, a6) -> 4-qubit QuantumCircui
+[B3] 1.0/1 PASS rzz barbell equals the CX barbell up to phase (6 rzz gates)
+--- cell 40 OK in 0.0 s :: ff.grade_bonus_B3(barbell_rzz)
+exercise     points   detail
+ex0.1            --   (not graded)
+ex0.2            --   (not graded)
+ex0.3            --   (not graded)
+ex0.4            --   (not graded)
+ex0.5            --   (not graded)
+ex1.1            --   (not graded)
+ex1.2            --   (not graded)
+ex1.3            --   (not graded)
+ex1.4            --   (not graded)
+ex1.5            --   (not graded)
+ex2.1            --   (not graded)
+ex2.2            --   (not graded)
+ex2.3            --   (not graded)
+ex2.4            --   (not graded)
+ex3.1        7.0/7    ODR exact on synthetic CP-symmetric data (L=6,8,34), uncertainty within 25 % of MC, bias f
+ex3.2        5.0/5    twirled circuits ISA + equivalent, 96 % dressed CZs, 8 distinct seeds; charge post-selecti
+ex3.3        8.0/8    reduced noise model matches the target on chain [50, 51, 58, 71, 72, 73, 74, 75, 59, 55, 5
+ex4.1        2.2/3    fallback dataset: capped at 75 %
+ex4.2       12.1/18   RMSE_W 0.125 (5.0), contrast 0.437 (3.1), shape 2, quiet 0.021 (2), coverage 0.33, RMSE_68
+ex4.3        3.0/4    RMSE_W 0.134 -> 0.052, z = 11.29, usage 182.0 s | usage_s = 182.0 is the organizer's estim
+B1           3.0/3    16/32-step circuits and Richardson profile ok (organizer compares the arrays offline)
+B2           2.0/2    toy ordering confirmed: {'raw_depol': 0.4661632728172159, 'odr_depol': 0.07444117492836444
+B3           1.0/1    rzz barbell equals the CX barbell up to phase (6 rzz gates)
+TOTAL       37.3/100 graded so far out of 45 autograded points; bonus 6.0/6 (ex 5 = 10 points by the judges)
+submission/ contains: ['B1.npz', 'canary_t0.npz', 'circuits_isa.qpy', 'error_budget.md', 'ex3_3.npz', 'ex4_1.npz', 'ex4_2.npz', 'flight_plan.json', 'hardware_t8.npz', 'improvement.npz', 'job_id.txt', 'job_info.json', 'layout.json', 'rehearsal_L6.npz', 'score.json']
+--- cell 42 OK in 0.0 s :: ff.summary()
+
+per-cell runtime:
+  cell   1      0.0 s  # Part 3 set-up: imports and three small helpers used in Parts 3-5 (no
+  cell   3      0.0 s  # PROMPT: implement ODR yourself.
+  cell   5      0.2 s  # Self-test of your ODR implementation on synthetic data (no prompts; 
+  cell   6      0.0 s  # organizer sanity check: the hand-written ODR reproduces the QDC help
+  cell   7      1.5 s  # grade 3.1 (synthetic data, fixed seeds)
+  cell   9      0.0 s  # PROMPT:
+  cell  11      4.4 s  # Twirl check + charge-witness toy at L = 4 (no prompts, < 30 s)
+  cell  12      1.6 s  # grade 3.2 (unitary equivalence + ISA check of twirl_circuit on a hid
+  cell  14      0.0 s  # PROMPT: reduced_noise_model(backend, chain) -> qiskit_aer.noise.Nois
+  cell  15     20.1 s  # PROMPT: build the four L=6, t=4 circuits (wave / wave_mitig / vacuum
+  cell  16      0.3 s  # PROMPT: post-process the rehearsal with YOUR functions:
+  cell  17      0.0 s  # grade 3.3 (noise model vs the frozen target summary, ODR consistency
+  cell  19      0.0 s  # Master switch, fallback loader and small helpers (no prompts)
+  cell  21      0.2 s  # PROMPT: canary. Transpile qc_wave_init / qc_vacuum_init onto layout_
+  cell  22      0.0 s  # grade 4.1
+  cell  24      0.1 s  # PROMPT: main run. If RUN_ON_HARDWARE: submit the 4 PUBs with the Par
+  cell  25      0.0 s  # grade 4.2 (recomputes X_hat from evs with YOUR odr_mitigate, then ap
+  cell  27      0.1 s  # PROMPT: improvement run. Fill `improvement` (see the table above). I
+  cell  28      0.0 s  # grade 4.3
+  cell  30      0.3 s  # Error-budget table from the notebook variables (no prompts; extend i
+  cell  33      5.2 s  # PROMPT: build the dt = 0.5 and 0.25 physics circuits with evolve_cir
+  cell  34      3.2 s  _nan68 = np.full(2 * L, np.nan)
+  cell  36     32.3 s  # PROMPT: fill toy_results = {"raw_depol", "odr_depol", "raw_amp", "od
+  cell  37      0.0 s  ff.grade_bonus_B2(toy_results)
+  cell  39      0.0 s  # PROMPT: barbell_rzz(a1, a2, a3, a4, a5, a6) -> 4-qubit QuantumCircui
+  cell  40      0.0 s  ff.grade_bonus_B3(barbell_rzz)
+  cell  42      0.0 s  ff.summary()
+TOTAL 69.6 s over 27 code cells (16 markdown cells)
+grader calls: []
+SMOKE TEST PASSED

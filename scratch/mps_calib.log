@@ -1,0 +1,5 @@
+bd=8 thr=None: 1.3s max|X-X64|=0.0561 rmse=0.0148 window max=0.0561
+bd=20 thr=None: 7.0s max|X-X64|=0.0029 rmse=0.0008 window max=0.0029
+bd=40 thr=None: 33.6s max|X-X64|=0.0007 rmse=0.0002 window max=0.0007
+bd=40 thr=1e-10: 25.1s max|X-X64|=0.0007 rmse=0.0002 window max=0.0007
+bd=32 thr=None: 25.3s max|X-X64|=0.0013 rmse=0.0004 window max=0.0013
