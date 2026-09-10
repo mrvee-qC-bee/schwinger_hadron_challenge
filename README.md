@@ -167,9 +167,3 @@ the ODR bias derivation and the rationale for your improvement run.
 * Qiskit Aer MPS simulator: [AerSimulator](https://qiskit.github.io/qiskit-aer/stubs/qiskit_aer.AerSimulator.html)
   (`method="matrix_product_state"`, `matrix_product_state_max_bond_dimension`).
 
-## Licence and attribution
-
-`challenge_utils.py`, the four `reference_data/chi_*_L34*.txt` files and the figures in `images/` are
-adapted from the QDC 2025 challenge (Apache-2.0, see `LICENSE-qdc-challenges-2025`); modifications are
-marked `# FF:`. The fallback dataset the organizers may release was recorded on `ibm_kingston` in July 2026. New
-material is released under the same Apache-2.0 terms. Your submission remains your property.
